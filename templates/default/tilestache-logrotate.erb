@@ -1,0 +1,12 @@
+<%= node[:tilestache][:gunicorn][:logdir] %>/<%= node[:tilestache][:gunicorn][:logfile] %> {
+  daily
+  missingok
+  rotate 2
+  compress
+  dateext
+  copytruncate
+  noolddir
+  sharedscripts
+  postrotate
+  endscript
+}

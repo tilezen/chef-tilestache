@@ -1,0 +1,63 @@
+#!/bin/sh
+#
+# /etc/rc.d/init.d/tilestache
+#
+# Tilestache: render and serve vector tiles
+#
+# chkconfig: - 64 36
+# description: tilestache
+# processname: tilestache
+
+# Source init functions
+. /etc/rc.d/init.d/functions
+
+prog="tilestache"
+
+base="<%= node[:tilestache][:cfg_path] %>"
+prog_bin="/usr/bin/gunicorn --daemon --log-file <%= node[:tilestache][:gunicorn][:logdir] %>/<%= node[:tilestache][:gunicorn][:logfile] %>"
+prog_app="tilestache:app"
+prog_cfg="<%= node[:tilestache][:gunicorn][:cfgbasedir] %>/gunicorn.cfg"
+PIDFILE="<%= node[:tilestache][:gunicorn][:piddir] %>/<%= node[:tilestache][:gunicorn][:pidfile] %>"
+
+start()
+{
+  echo -n $"Starting $prog: "
+  cd $base
+  daemon "$prog_bin $prog_app -c $prog_cfg"
+  sleep 1
+  [ -f $PIDFILE ] && success $"$prog startup" || failure $"$prog startup"
+  echo
+}
+
+stop()
+{
+  echo -n $"Shutting down $prog: "
+  [ -f $PIDFILE ] && killproc -p $PIDFILE || success $"$prog shutdown"
+  echo
+}
+
+
+case "$1" in
+  start)
+    start
+  ;;
+
+  stop)
+    stop
+  ;;
+
+  status)
+        status $prog
+  ;;
+
+  restart)
+    stop
+    start
+  ;;
+
+  *)
+    echo "Usage: $0 {start|stop|restart|status}"
+  ;;
+
+esac
+

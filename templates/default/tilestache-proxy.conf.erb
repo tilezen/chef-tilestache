@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+  ServerName <%= @params[:server_name] %>
+  ProxyRequests off
+  ProxyPass / http://<%= node[:ipaddress] %>:<%= @params[:proxy_port] %>/
+  <Location />
+    Order allow,deny
+    Allow from all
+  </Location>
+</VirtualHost>
+
