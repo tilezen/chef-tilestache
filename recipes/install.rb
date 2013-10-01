@@ -20,7 +20,7 @@ python_pip 'tilestache' do
 end
 
 template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
-  source 'tilestache.conf.erb'
+  source "#{node[:tilestache][:cfg_file]}.erb"
   owner 'root'
   group 'root'
   mode 0644
