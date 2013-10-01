@@ -19,8 +19,8 @@ python_pip 'tilestache' do
   version "#{node[:tilestache][:version]}"
 end
 
-template "#{node[:tilestache][:cfg_path]}/tilestache.cfg" do
-  source "#{node[:tilestache][:cfg_template]}"
+template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
+  source 'tilestache.conf.erb'
   owner 'root'
   group 'root'
   mode 0644
