@@ -12,6 +12,23 @@ Usage
 
 Simply include tilestache in your run list, or call it from another recipe.
 
+Note that this gets you the default template, which is probably rather useless. 
+For the time being, the best way to override this, until I can get something together
+to build the json config file via attributes or some such, you can wrap tilestache with
+a wrapper cookbook, and inside it do the following:
+
+```
+chef_gem 'chef-rewind'
+require 'chef/rewind'
+
+include_recipe 'tilestache'
+
+rewind :template => "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
+  source "#{node[:tilestache][:cfg_file]}.erb"
+  cookbook_name 'tilestachewrap'
+end
+```
+
 Supported Platforms
 -------------------
 Tested on Ubuntu12.04LTS.
