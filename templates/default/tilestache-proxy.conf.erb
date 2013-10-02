@@ -1,7 +1,7 @@
 <VirtualHost *:80>
   ServerName <%= @params[:server_name] %>
   ProxyRequests off
-  ProxyPass / http://<%= node[:ipaddress] %>:<%= @params[:proxy_port] %>/
+  ProxyPass / http://<%= node[:ipaddress] %>:<%= @params[:proxy_port] %>/ max=<%= @params[:max] %> ttl=<%= @params[:ttl] %> retry=<%= @params[:retrytimeout] %> connectiontimeout=<%= @params[:connectiontimeout] %>
   <Location />
     Order allow,deny
     Allow from all

@@ -18,6 +18,10 @@ when true
     template 'tilestache-proxy.conf.erb'
     server_name node[:tilestache][:apache][:server_name]
     proxy_port node[:tilestache][:gunicorn][:port]
+    max node[:tilestache][:apache][:max]
+    ttl node[:tilestache][:apache][:ttl]
+    retrytimeout node[:tilestache][:apache][:retrytimeout]
+    connectiontimeout node[:tilestache][:apache][:connectiontimeout]
   end
 
   apache_site 'tilestache-proxy' do
