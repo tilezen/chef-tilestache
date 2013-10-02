@@ -10,23 +10,16 @@ Usage
 -----
     include_recipe 'tilestache'
 
-Simply include tilestache in your run list, or call it from another recipe.
-
-Note that this gets you the default template, which is probably rather useless. 
-For the time being, the best way to override this, until I can get something together
-to build the json config file via attributes or some such, you can wrap tilestache with
-a wrapper cookbook, and inside it do the following:
+It's recommended that you use a wrapper cookbook with tilestache. The setup
+is very simple: a single recipe that does an ```include_recipe tilestache```,
+and a single attribute, default[:tilestache][:config_file_hash], which will contain
+a hash to be converted to json for you config. Example below:
 
 ```
-chef_gem 'chef-rewind'
-require 'chef/rewind'
-
-include_recipe 'tilestache'
-
-rewind :template => "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
-  source "#{node[:tilestache][:cfg_file]}.erb"
-  cookbook_name 'tilestachewrap'
-end
+default[:tilestache][:config_file_hash] = {
+  "cache" => { "name" => "Test", "verbose" => "true" },
+  "layers" => { "vector-postgis-points" => { "provider" => { "name" => "vector", "driver" => "PostgreSQL", "parameters" => { "dbname" => "gis", "user" => "gisuser", "password" => "some_secret_stuff_here", "table" => "planet_osm_point", "host" => "mypostgis.server.com" } } } }
+}
 ```
 
 Supported Platforms
