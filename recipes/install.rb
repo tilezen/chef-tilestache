@@ -13,8 +13,10 @@ require 'json'
 include_recipe 'tilestache::service'
 include_recipe 'tilestache::gunicorn'
 
-package 'python-gdal' do
-  action :install
+%w(python-gdal python-shapely python-psycopg2).each do |p|
+  package p do
+    action :install
+  end
 end
 
 python_pip 'tilestache' do
