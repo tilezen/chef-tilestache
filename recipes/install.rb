@@ -22,14 +22,6 @@ python_pip 'tilestache' do
   version "#{node[:tilestache][:version]}"
 end
 
-template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
-  source "#{node[:tilestache][:cfg_file]}.erb"
-  owner 'root'
-  group 'root'
-  mode 0644
-  notifies :restart, 'service[tilestache]', :immediately
-end
-
 file "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
   action :create
   owner 'root'
