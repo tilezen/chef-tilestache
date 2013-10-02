@@ -25,8 +25,8 @@ end
 file "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
   action :create
   owner 'root'
-  group 'root'
-  mode 0644
+  group "#{node[:tilestache][:user]}"
+  mode 0640
   content JSON.pretty_generate(node[:tilestache][:config_file_hash])
   notifies :restart, 'service[tilestache]', :immediately
 end
