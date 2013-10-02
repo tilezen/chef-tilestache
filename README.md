@@ -45,6 +45,14 @@ Base location that will house conf/tilecache.cfg
 User to run tilestache as
 * default: tilestache
 
+#### uid
+Numeric ID for tilestache user
+* default: nil
+
+#### gid
+Numeric ID for tilestache group
+* default: nil
+
 #### user_shell
 Shell for your tilestache user
 * default: /bin/false

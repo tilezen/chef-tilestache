@@ -12,6 +12,8 @@ user_account "#{node[:tilestache][:user]}" do
   home '/home/tilestache'
   shell "#{node[:tilestache][:user_shell]}"
   ssh_keygen node[:tilestache][:user_keygen]
+  uid node[:tilestache][:uid]
+  gid node[:tilestache][:gid]
 end
 
 user_ulimit "#{node[:tilestache][:user]}" do
