@@ -9,5 +9,10 @@ default[:tilestache][:user_shell]       = '/bin/false'
 default[:tilestache][:user_keygen]      = false
 default[:tilestache][:apache_proxy]     = true
 
+default[:tilestache][:config_file_hash] = {
+  "cache" => { "name" => "Test", "verbose" => "true" },
+  "provider" => { "name" => "proxy", "url" => "http://tile.openstreetmap.org/{Z}/{X}/{Y}.png" }
+}
+
 # python
 default[:python][:install_method] = 'package'
