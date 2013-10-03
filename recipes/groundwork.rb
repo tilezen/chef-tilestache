@@ -12,6 +12,7 @@ user_account "#{node[:tilestache][:user]}" do
   home '/home/tilestache'
   shell "#{node[:tilestache][:user_shell]}"
   ssh_keygen node[:tilestache][:user_keygen]
+  create_group true
   uid node[:tilestache][:uid]
   gid node[:tilestache][:gid]
 end
