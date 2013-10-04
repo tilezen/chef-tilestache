@@ -24,6 +24,10 @@ python_pip 'tilestache' do
   version "#{node[:tilestache][:version]}"
 end
 
+# NOTE: there is an issue with the following if you run chef under 
+#   ruby1.8.7, in that it doesn't support ordered hashes. Since the key
+#   retrieval is random, the config file will be regenerated on every 
+#   chef run. Please upgrade to ruby1.9.x (I'm looking at you opsworks!)
 file "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
   action :create
   owner 'root'

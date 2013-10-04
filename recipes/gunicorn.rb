@@ -9,7 +9,6 @@ end
 
 gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/gunicorn.cfg" do
   action :create
-  notifies :restart, 'service[tilestache]', :delayed
   listen              "#{node[:ipaddress]}:#{node[:tilestache][:gunicorn][:port]}"
   pid                 "#{node[:tilestache][:gunicorn][:piddir]}/#{node[:tilestache][:gunicorn][:pidfile]}"
   backlog             node[:tilestache][:gunicorn][:backlog]
@@ -19,4 +18,5 @@ gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/gunicorn.cfg" do
   worker_keepalive    node[:tilestache][:gunicorn][:keepalive]
   worker_timeout      node[:tilestache][:gunicorn][:timeout]
   worker_class        "#{node[:tilestache][:gunicorn][:worker_class]}"
+  notifies :restart, 'service[tilestache]', :delayed
 end

@@ -1,4 +1,8 @@
-# tilestache
+#
+# Cookbook Name:: tilestache
+# Attributes:: default
+#
+
 default[:tilestache][:version]          = '1.49.8'
 default[:tilestache][:filehandle_limit] = 20480
 default[:tilestache][:cfg_path]         = '/etc/tilestache'
@@ -11,6 +15,7 @@ default[:tilestache][:apache_proxy]     = true
 default[:tilestache][:uid]              = nil
 default[:tilestache][:gid]              = nil
 
+# tilestache config file hash
 default[:tilestache][:config_file_hash] = {
   "cache" => { "name" => "Test", "verbose" => "true" },
   "provider" => { "name" => "proxy", "url" => "http://tile.openstreetmap.org/{Z}/{X}/{Y}.png" }
