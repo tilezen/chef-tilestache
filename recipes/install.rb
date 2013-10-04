@@ -13,8 +13,21 @@ require 'json'
 include_recipe 'tilestache::service'
 include_recipe 'tilestache::gunicorn'
 
-%w(python-gdal python-shapely python-psycopg2 python-memcache).each do |p|
-  package p do
+case node[:platform_family]
+when 'ubuntu'
+  %w(python-gdal python-shapely python-psycopg2 python-memcache).each do |p|
+    package p do
+      action :install
+    end
+  end
+when 'rhel'
+  %w(gdal-python python-psycopg2 python-memcached).each do |p|
+    package p do
+      action :install
+    end
+  end
+
+  python_pip 'Shapely' do
     action :install
   end
 end

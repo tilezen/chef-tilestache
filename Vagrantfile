@@ -8,8 +8,16 @@ Vagrant.configure("2") do |config|
 
   config.vm.hostname = "tilestache"
 
-  config.vm.box = "ubuntu-12.04-omnibus-chef"
-  config.vm.box_url = "http://grahamc.com/vagrant/ubuntu-12.04-omnibus-chef.box"
+  # Define multiple boxes for development
+  config.vm.define :centos do |centos|
+    centos.vm.box = "centos-6.4-chef"
+    centos.vm.box_url = "http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130427.box"
+  end
+
+  config.vm.define :ubuntu do |ubuntu|
+    ubuntu.vm.box = "ubuntu-12.04-omnibus-chef"
+    ubuntu.vm.box_url = "http://grahamc.com/vagrant/ubuntu-12.04-omnibus-chef.box"
+  end
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
@@ -73,7 +81,7 @@ Vagrant.configure("2") do |config|
     }
 
     chef.run_list = [
-        "recipe[tilestache::default]"
+      "recipe[tilestache::default]"
     ]
   end
 end
