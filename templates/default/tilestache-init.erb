@@ -16,7 +16,7 @@ prog="tilestache"
 base="<%= node[:tilestache][:cfg_path] %>"
 prog_bin="/usr/bin/gunicorn --daemon --log-file <%= node[:tilestache][:gunicorn][:logdir] %>/<%= node[:tilestache][:gunicorn][:logfile] %>"
 prog_app="\"TileStache:WSGITileServer('<%= node[:tilestache][:cfg_path] %>/<%= node[:tilestache][:cfg_file] %>')\""
-prog_cfg="<%= node[:tilestache][:gunicorn][:cfgbasedir] %>/gunicorn.cfg"
+prog_cfg="<%= node[:tilestache][:gunicorn][:cfgbasedir] %>/<%= node[:tilestache][:gunicorn][:cfg_file] %>"
 PIDFILE="<%= node[:tilestache][:gunicorn][:piddir] %>/<%= node[:tilestache][:gunicorn][:pidfile] %>"
 
 start()

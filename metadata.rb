@@ -4,7 +4,7 @@ maintainer_email 'grant@mapzen.com'
 license          'All rights reserved'
 description      'Installs/Configures tilestache'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.8.1'
+version          '0.9.0'
 
 recipe 'tilestache', 'Installs tilestache'
 
@@ -14,6 +14,7 @@ recipe 'tilestache', 'Installs tilestache'
   git
   gunicorn
   python
+  supervisor
   ulimit
   user
   yum

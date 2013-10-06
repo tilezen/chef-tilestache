@@ -25,3 +25,4 @@ end
 end
 
 include_recipe 'tilestache::install'
+

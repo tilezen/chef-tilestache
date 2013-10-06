@@ -17,7 +17,7 @@ CHROOT="<%= node[:tilestache][:cfg_path] %>"
 USER="<%= node[:tilestache][:user] %>"
 GROUP="<%= node[:tilestache][:group] %>"
 LOG="<%= node[:tilestache][:gunicorn][:logdir] %>/<%= node[:tilestache][:gunicorn][:logfile] %>"
-CFG="<%= node[:tilestache][:gunicorn][:cfgbasedir] %>/gunicorn.cfg"
+CFG="<%= node[:tilestache][:gunicorn][:cfgbasedir] %>/<%= node[:tilestache][:gunicorn][:cfg_file] %>"
 GUNICORN="/usr/local/bin/gunicorn"
 APP="TileStache:WSGITileServer('<%= node[:tilestache][:cfg_path] %>/<%= node[:tilestache][:cfg_file] %>')"
 

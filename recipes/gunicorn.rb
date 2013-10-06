@@ -7,7 +7,7 @@ python_pip "#{node[:tilestache][:gunicorn][:worker_class]}" do
   action :install
 end
 
-gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/gunicorn.cfg" do
+gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/#{node[:tilestache][:gunicorn][:cfg_file]}" do
   action :create
   listen              "#{node[:ipaddress]}:#{node[:tilestache][:gunicorn][:port]}"
   pid                 "#{node[:tilestache][:gunicorn][:piddir]}/#{node[:tilestache][:gunicorn][:pidfile]}"
@@ -18,5 +18,10 @@ gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/gunicorn.cfg" do
   worker_keepalive    node[:tilestache][:gunicorn][:keepalive]
   worker_timeout      node[:tilestache][:gunicorn][:timeout]
   worker_class        "#{node[:tilestache][:gunicorn][:worker_class]}"
-  notifies :restart, 'service[tilestache]', :delayed
+  case node[:tilestache][:supervisor]
+  when true
+    notifies :restart, 'supervisor_service[tilestache]', :delayed
+  else
+    notifies :restart, 'service[tilestache]', :delayed
+  end
 end

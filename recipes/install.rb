@@ -10,8 +10,15 @@
 chef_gem 'json'
 require 'json'
 
-include_recipe 'tilestache::service'
 include_recipe 'tilestache::gunicorn'
+
+# if supervisor, then don't install init service
+case node[:tilestache][:supervisor]
+when true
+  include_recipe 'tilestache::supervisor'
+else
+  include_recipe 'tilestache::service'
+end
 
 case node[:platform_family]
 when 'ubuntu'
@@ -47,7 +54,12 @@ file "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
   group "#{node[:tilestache][:user]}"
   mode 0640
   content JSON.pretty_generate(node[:tilestache][:config_file_hash])
-  notifies :restart, 'service[tilestache]', :immediately
+  case node[:tilestache][:supervisor]
+  when true
+    notifies :restart, 'supervisor_service[tilestache]', :immediately
+  else
+    notifies :restart, 'service[tilestache]', :immediately
+  end
 end
 
 include_recipe 'tilestache::apache'

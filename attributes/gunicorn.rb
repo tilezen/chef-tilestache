@@ -17,4 +17,5 @@ default[:tilestache][:gunicorn][:worker_class] = 'tornado'
 default[:tilestache][:gunicorn][:preload]      = false
 default[:tilestache][:gunicorn][:workers]      = node.cpu.total
 default[:tilestache][:gunicorn][:cfgbasedir]   = '/etc/tilestache'
+default[:tilestache][:gunicorn][:cfg_file]     = 'gunicorn.cfg'
 
