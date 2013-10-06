@@ -21,7 +21,7 @@ else
 end
 
 case node[:platform_family]
-when 'ubuntu'
+when 'debian'
   %w(python-gdal python-shapely python-psycopg2 python-memcache).each do |p|
     package p do
       action :install
