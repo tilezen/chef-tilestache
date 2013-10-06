@@ -10,16 +10,7 @@
 chef_gem 'json'
 require 'json'
 
-include_recipe 'tilestache::gunicorn'
-
-# if supervisor, then don't install init service
-case node[:tilestache][:supervisor]
-when true
-  include_recipe 'tilestache::supervisor'
-else
-  include_recipe 'tilestache::service'
-end
-
+# dependencies
 case node[:platform_family]
 when 'debian'
   %w(python-gdal python-shapely python-psycopg2 python-memcache).each do |p|
@@ -42,6 +33,16 @@ end
 python_pip 'tilestache' do
   action :install
   version "#{node[:tilestache][:version]}"
+end
+
+include_recipe 'tilestache::gunicorn'
+
+# if supervisor, then don't install init service
+case node[:tilestache][:supervisor]
+when true
+  include_recipe 'tilestache::supervisor'
+else
+  include_recipe 'tilestache::service'
 end
 
 # NOTE: there is an issue with the following if you run chef under 
