@@ -12,9 +12,9 @@ include_recipe 'supervisor'
 supervisor_service 'tilestache' do
   action :enable
   autostart true
-  startsecs 5
-  stopsignal 'TERM'
+  startsecs 3
   stopwaitsecs 3
+  stopsignal 'TERM'
   stdout_logfile "#{node[:tilestache][:gunicorn][:logdir]}/#{node[:tilestache][:gunicorn][:logfile]}"
   stderr_logfile "#{node[:tilestache][:gunicorn][:logdir]}/#{node[:tilestache][:gunicorn][:logfile]}"
   directory "#{node[:tilestache][:cfg_path]}"

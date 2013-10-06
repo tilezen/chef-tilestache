@@ -1,3 +1,12 @@
+#
+# Cookbook Name:: tilestache
+# Recipe:: gunicorn
+#
+# Copyright 2013, Mapzen
+#
+# All rights reserved - Do Not Redistribute
+#
+
 python_pip 'gunicorn' do
   action :install
   version "#{node[:tilestache][:gunicorn][:version]}"
