@@ -17,7 +17,7 @@ when 'tornado'
   package 'python-tornado' do
     action :install
   end
-when 'gevent' do
+when 'gevent'
   package 'python-gevent' do
     action :install
   end
