@@ -12,8 +12,11 @@ python_pip 'gunicorn' do
   version "#{node[:tilestache][:gunicorn][:version]}"
 end
 
-python_pip "#{node[:tilestache][:gunicorn][:worker_class]}" do
-  action :install
+case node[:tilestache][:gunicorn][:worker_class]
+when 'tornado'
+  python_pip 'tornado' do
+    action :install
+  end
 end
 
 gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/#{node[:tilestache][:gunicorn][:cfg_file]}" do
