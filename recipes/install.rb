@@ -13,7 +13,7 @@ require 'json'
 # dependencies
 case node[:platform_family]
 when 'debian'
-  %w(python-gdal python-shapely python-psycopg2 python-memcache python-gevent).each do |p|
+  %w(python-gdal python-shapely python-psycopg2 python-memcache).each do |p|
     package p do
       action :install
     end

@@ -14,7 +14,11 @@ end
 
 case node[:tilestache][:gunicorn][:worker_class]
 when 'tornado'
-  python_pip 'tornado' do
+  package 'python-tornado' do
+    action :install
+  end
+when 'gevent' do
+  package 'python-gevent' do
     action :install
   end
 end
