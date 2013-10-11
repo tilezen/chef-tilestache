@@ -22,6 +22,7 @@ when true
     ttl node[:tilestache][:apache][:ttl]
     retrytimeout node[:tilestache][:apache][:retrytimeout]
     connectiontimeout node[:tilestache][:apache][:connectiontimeout]
+    base_uri node[:tilestache][:apache][:base_uri]
   end
 
   apache_site 'tilestache-proxy' do

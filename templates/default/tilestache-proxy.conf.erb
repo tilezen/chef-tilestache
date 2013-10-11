@@ -1,8 +1,8 @@
 <VirtualHost *:80>
   ServerName <%= @params[:server_name] %>
   ProxyRequests off
-  ProxyPass / http://<%= node[:ipaddress] %>:<%= @params[:proxy_port] %>/ max=<%= @params[:max] %> ttl=<%= @params[:ttl] %> retry=<%= @params[:retrytimeout] %> connectiontimeout=<%= @params[:connectiontimeout] %>
-  <Location />
+  ProxyPass <%= @params[:base_uri] %> http://<%= node[:ipaddress] %>:<%= @params[:proxy_port] %>/ max=<%= @params[:max] %> ttl=<%= @params[:ttl] %> retry=<%= @params[:retrytimeout] %> connectiontimeout=<%= @params[:connectiontimeout] %>
+  <Location <%= @params[:base_uri] %>>
     Header set Access-Control-Allow-Origin "*"
     SetOutputFilter DEFLATE
     Order allow,deny
