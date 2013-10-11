@@ -8,5 +8,5 @@ default[:tilestache][:apache][:max]               = 20
 default[:tilestache][:apache][:ttl]               = 300
 default[:tilestache][:apache][:retrytimeout]      = 3
 default[:tilestache][:apache][:connectiontimeout] = 3
-default[:tilestache][:apache][:base_uri]          = '/vector'
+default[:tilestache][:apache][:base_uri]          = '/vector/'
 default[:tilestache][:apache][:canvas_map]        = false
