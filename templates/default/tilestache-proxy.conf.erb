@@ -8,5 +8,13 @@
     Order allow,deny
     Allow from all
   </Location>
+
+<% if @params[:canvas_map] == true -%>
+  AliasMatch ^/$ /var/www/index.html
+  AliasMatch ^/vector$ /var/www/index.html
+  <Directory /var/www>
+    Options Indexes
+  </Directory>
+<% end -%>
 </VirtualHost>
 

@@ -23,6 +23,7 @@ when true
     retrytimeout node[:tilestache][:apache][:retrytimeout]
     connectiontimeout node[:tilestache][:apache][:connectiontimeout]
     base_uri node[:tilestache][:apache][:base_uri]
+    canvas_map node[:tilestache][:apache][:canvas_map]
   end
 
   apache_site 'tilestache-proxy' do
