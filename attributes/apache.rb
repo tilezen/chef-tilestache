@@ -10,4 +10,4 @@ default[:tilestache][:apache][:retrytimeout]      = 3
 default[:tilestache][:apache][:connectiontimeout] = 3
 default[:tilestache][:apache][:base_uri]          = '/vector/'
 default[:tilestache][:apache][:canvas_map]        = false
-default[:tilestache][:apache][:max_age]           = 7200
+default[:tilestache][:apache][:max_age]           = 43200
