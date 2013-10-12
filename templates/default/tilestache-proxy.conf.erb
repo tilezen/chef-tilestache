@@ -5,6 +5,7 @@
   <Location <%= @params[:base_uri] %>>
     Header set Access-Control-Allow-Origin "*"
     SetOutputFilter DEFLATE
+    ExpiresDefault "access plus 4 hours"
     Order allow,deny
     Allow from all
   </Location>
