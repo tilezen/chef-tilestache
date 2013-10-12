@@ -11,6 +11,7 @@ case node[:tilestache][:apache_proxy]
 when true
   include_recipe 'apache2'
   include_recipe 'apache2::mod_proxy'
+  include_recipe 'apache2::mod_expires'
   include_recipe 'apache2::mod_proxy_http'
   include_recipe 'apache2::mod_proxy_connect'
 
