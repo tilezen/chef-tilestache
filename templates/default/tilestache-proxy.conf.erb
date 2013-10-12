@@ -5,7 +5,7 @@
   <Location <%= @params[:base_uri] %>>
     Header set Access-Control-Allow-Origin "*"
     SetOutputFilter DEFLATE
-    ExpiresDefault "access plus 4 hours"
+    Header set Cache-Control "max-age=<%= @params[:max_age] %>"
     Order allow,deny
     Allow from all
   </Location>
