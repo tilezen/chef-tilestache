@@ -15,6 +15,7 @@ supervisor_service 'tilestache' do
   startsecs 3
   stopwaitsecs 3
   stopsignal 'TERM'
+  user "#{node[:tilestache][:user]}"
   stdout_logfile "#{node[:tilestache][:gunicorn][:logdir]}/#{node[:tilestache][:gunicorn][:logfile]}"
   stderr_logfile "#{node[:tilestache][:gunicorn][:logdir]}/#{node[:tilestache][:gunicorn][:logfile]}"
   directory "#{node[:tilestache][:cfg_path]}"
