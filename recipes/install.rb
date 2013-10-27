@@ -52,14 +52,14 @@ end
 file "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
   action :create
   owner 'root'
-  group "#{node[:tilestache][:user]}"
+  group "#{node[:tilestache][:group]}"
   mode 0640
   content JSON.pretty_generate(node[:tilestache][:config_file_hash])
   case node[:tilestache][:supervisor]
   when true
-    notifies :restart, 'supervisor_service[tilestache]', :immediately
+    notifies :restart, 'supervisor_service[tilestache]', :delayed
   else
-    notifies :restart, 'service[tilestache]', :immediately
+    notifies :restart, 'service[tilestache]', :delayed
   end
 end
 
