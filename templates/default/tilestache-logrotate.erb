@@ -9,4 +9,17 @@
   sharedscripts
   postrotate
   endscript
+  }
+
+<%= node[:tilestache][:gunicorn][:logdir] %>/supervisor.log {
+  daily
+  missingok
+  rotate 2
+  compress
+  dateext
+  copytruncate
+  noolddir
+  sharedscripts
+  postrotate
+  endscript
 }
