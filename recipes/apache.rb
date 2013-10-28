@@ -17,16 +17,16 @@ when true
 
   web_app 'tilestache-proxy' do
     template 'tilestache-proxy.conf.erb'
-    server_name node[:tilestache][:apache][:server_name]
-    proxy_port node[:tilestache][:gunicorn][:port]
-    max node[:tilestache][:apache][:max]
-    ttl node[:tilestache][:apache][:ttl]
-    retrytimeout node[:tilestache][:apache][:retrytimeout]
-    connectiontimeout node[:tilestache][:apache][:connectiontimeout]
-    timeout node[:tilestache][:apache][:timeout]
-    base_uri node[:tilestache][:apache][:base_uri]
-    canvas_map node[:tilestache][:apache][:canvas_map]
-    max_age node[:tilestache][:apache][:max_age]
+    proxy_port        node [:tilestache][:gunicorn][:port]
+    server_name       node [:tilestache][:apache][:server_name]
+    max               node [:tilestache][:apache][:max]
+    ttl               node [:tilestache][:apache][:ttl]
+    retrytimeout      node [:tilestache][:apache][:retrytimeout]
+    connectiontimeout node [:tilestache][:apache][:connectiontimeout]
+    timeout           node [:tilestache][:apache][:timeout]
+    base_uri          node [:tilestache][:apache][:base_uri]
+    canvas_map        node [:tilestache][:apache][:canvas_map]
+    max_age           node [:tilestache][:apache][:max_age]
   end
 
   apache_site 'tilestache-proxy' do
