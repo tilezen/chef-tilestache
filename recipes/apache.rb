@@ -23,6 +23,7 @@ when true
     ttl node[:tilestache][:apache][:ttl]
     retrytimeout node[:tilestache][:apache][:retrytimeout]
     connectiontimeout node[:tilestache][:apache][:connectiontimeout]
+    timeout node[:tilestache][:apache][:timeout]
     base_uri node[:tilestache][:apache][:base_uri]
     canvas_map node[:tilestache][:apache][:canvas_map]
     max_age node[:tilestache][:apache][:max_age]
