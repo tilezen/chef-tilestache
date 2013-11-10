@@ -3,7 +3,7 @@
 # Attributes:: default
 #
 
-default[:tilestache][:supervisor]       = true
+default[:tilestache][:init_type]        = 'runit'
 default[:tilestache][:version]          = '1.49.8'
 default[:tilestache][:filehandle_limit] = 20480
 default[:tilestache][:cfg_path]         = '/etc/tilestache'

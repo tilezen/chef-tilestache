@@ -1,0 +1,5 @@
+#!/bin/bash
+
+exec 2>&1
+exec chpst -u <%= node[:tilestache][:user] %> /usr/local/bin/gunicorn "TileStache:WSGITileServer('<%= node[:tilestache][:cfg_path] %>/<%= node[:tilestache][:cfg_file] %>')" --log-file <%= node[:tilestache][:gunicorn][:logdir] %>/<%= node[:tilestache][:gunicorn][:logfile] %> -c <%= node[:tilestache][:gunicorn][:cfgbasedir] %>/<%= node[:tilestache][:gunicorn][:cfg_file] %>
+

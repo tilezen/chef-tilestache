@@ -38,10 +38,12 @@ end
 include_recipe 'tilestache::gunicorn'
 
 # if supervisor, then don't install init service
-case node[:tilestache][:supervisor]
-when true
+case node[:tilestache][:init_type]
+when 'supervisor'
   include_recipe 'tilestache::supervisor'
-else
+when 'runit'
+  include_recipe 'tilestache::runit'
+when 'sysv'
   include_recipe 'tilestache::service'
 end
 

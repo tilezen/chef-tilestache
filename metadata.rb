@@ -14,6 +14,7 @@ recipe 'tilestache', 'Installs tilestache'
   git
   gunicorn
   python
+  runit
   supervisor
   ulimit
   user
