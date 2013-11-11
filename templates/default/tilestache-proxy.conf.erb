@@ -19,9 +19,9 @@
   </Location>
 
 <% if @params[:canvas_map] == true -%>
-  AliasMatch ^/$ /var/www/index.html
-  AliasMatch ^/vector$ /var/www/index.html
-  <Directory /var/www>
+  AliasMatch ^/$ /var/www/canvas-map/index.html
+  AliasMatch ^/vector$ /var/www/canvas-map/index.html
+  <Directory /var/www/canvas-map>
     Options Indexes
   </Directory>
 <% end -%>
