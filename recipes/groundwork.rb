@@ -7,14 +7,18 @@
 # All rights reserved - Do Not Redistribute
 #
 
-user_account "#{node[:tilestache][:user]}" do
-  manage_home true
-  home '/home/tilestache'
-  shell "#{node[:tilestache][:user_shell]}"
-  ssh_keygen node[:tilestache][:user_keygen]
-  create_group true
-  uid node[:tilestache][:uid]
-  gid node[:tilestache][:gid]
+# is someone tells us to run as root,
+#   don't muck with the account
+unless node[:tilestache][:user] == 'root'
+  user_account "#{node[:tilestache][:user]}" do
+    manage_home true
+    home '/home/tilestache'
+    shell "#{node[:tilestache][:user_shell]}"
+    ssh_keygen node[:tilestache][:user_keygen]
+    create_group true
+    uid node[:tilestache][:uid]
+    gid node[:tilestache][:gid]
+  end
 end
 
 user_ulimit "#{node[:tilestache][:user]}" do
