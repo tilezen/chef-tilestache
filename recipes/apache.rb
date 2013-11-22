@@ -14,9 +14,11 @@ when true
   #include_recipe 'apache2::mod_expires'
   #include_recipe 'apache2::mod_proxy_http'
   #include_recipe 'apache2::mod_proxy_connect'
-  
-  apache_site 'default' do
-    action :disable
+ 
+  %w(default 000-default).each do |site| 
+    apache_site site do
+      enable false
+    end
   end
 
   %w(proxy expires proxy_http proxy_connect).each do |m|
