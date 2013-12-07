@@ -47,16 +47,8 @@ when 'sysv'
   include_recipe 'tilestache::service'
 end
 
-# NOTE: there is an issue with the following if you run chef under 
-#   ruby1.8.7, in that it doesn't support ordered hashes. Since the key
-#   retrieval is random, the config file will be regenerated on every 
-#   chef run. Please upgrade to ruby1.9.x (I'm looking at you opsworks!)
-file "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
-  action :create
-  owner 'root'
-  group "#{node[:tilestache][:group]}"
-  mode 0640
-  content JSON.pretty_generate(node[:tilestache][:config_file_hash])
+tilestacherc 'tilestache-config' do
+  cookbook node[:tilestache][:config][:cookbook]
   case node[:tilestache][:supervisor]
   when true
     notifies :restart, 'supervisor_service[tilestache]', :delayed
@@ -64,6 +56,24 @@ file "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
     notifies :restart, 'service[tilestache]', :delayed
   end
 end
+
+# NOTE: there is an issue with the following if you run chef under 
+#   ruby1.8.7, in that it doesn't support ordered hashes. Since the key
+#   retrieval is random, the config file will be regenerated on every 
+#   chef run. Please upgrade to ruby1.9.x (I'm looking at you opsworks!)
+#file "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
+#  action :create
+#  owner 'root'
+#  group "#{node[:tilestache][:group]}"
+#  mode 0640
+#  content JSON.pretty_generate(node[:tilestache][:config_file_hash])
+#  case node[:tilestache][:supervisor]
+#  when true
+#    notifies :restart, 'supervisor_service[tilestache]', :delayed
+#  else
+#    notifies :restart, 'service[tilestache]', :delayed
+#  end
+#end
 
 include_recipe 'tilestache::apache'
 
