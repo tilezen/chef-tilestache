@@ -4,6 +4,7 @@
 #
 
 default[:tilestache][:apache][:server_name]       = 'tilestache'
+default[:tilestache][:apache][:port]              = 80
 default[:tilestache][:apache][:max]               = 20
 default[:tilestache][:apache][:ttl]               = 300
 default[:tilestache][:apache][:retrytimeout]      = 3

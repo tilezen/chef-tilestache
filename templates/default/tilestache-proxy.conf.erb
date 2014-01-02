@@ -1,4 +1,4 @@
-<VirtualHost *:80>
+<VirtualHost *:<%= @params[:port] %>>
   ServerName <%= @params[:server_name] %>
   DocumentRoot /var/www/canvas-map
   ProxyRequests off

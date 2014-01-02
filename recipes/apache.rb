@@ -27,6 +27,7 @@ when true
 
   web_app 'tilestache-proxy' do
     template 'tilestache-proxy.conf.erb'
+    port              node[:tilestache][:apache][:port]
     proxy_port        node[:tilestache][:gunicorn][:port]
     server_name       node[:tilestache][:apache][:server_name]
     max               node[:tilestache][:apache][:max]
