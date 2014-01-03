@@ -32,7 +32,7 @@ end
 
 python_pip 'tilestache' do
   action :install
-  version "#{node[:tilestache][:version]}"
+  #version "#{node[:tilestache][:version]}"
 end
 
 include_recipe 'tilestache::gunicorn'
