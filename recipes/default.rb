@@ -19,8 +19,8 @@ end
   git
   tilestache::groundwork
   python::package
-  python::pip
 ).each do |r|
+  #python::pip
   include_recipe r
 end
 
