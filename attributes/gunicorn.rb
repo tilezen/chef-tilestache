@@ -18,4 +18,3 @@ default[:tilestache][:gunicorn][:preload]      = false
 default[:tilestache][:gunicorn][:workers]      = (node.cpu.total * 2) + 1
 default[:tilestache][:gunicorn][:cfgbasedir]   = '/etc/tilestache'
 default[:tilestache][:gunicorn][:cfg_file]     = 'gunicorn.cfg'
-
