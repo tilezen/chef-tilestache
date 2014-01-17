@@ -15,4 +15,3 @@ define :tilestacherc, :reload => :delayed do
     action :create
   end
 end
-
