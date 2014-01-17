@@ -9,7 +9,7 @@
 
 python_pip 'gunicorn' do
   action :install
-  version "#{node[:tilestache][:gunicorn][:version]}"
+  version node[:tilestache][:gunicorn][:version]
 end
 
 case node[:tilestache][:gunicorn][:worker_class]
@@ -33,7 +33,8 @@ gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/#{node[:tilestache
   worker_processes    node[:tilestache][:gunicorn][:workers]
   worker_keepalive    node[:tilestache][:gunicorn][:keepalive]
   worker_timeout      node[:tilestache][:gunicorn][:timeout]
-  worker_class        "#{node[:tilestache][:gunicorn][:worker_class]}"
+  worker_class        node[:tilestache][:gunicorn][:worker_class]
+  
   case node[:tilestache][:supervisor]
   when true
     notifies :restart, 'supervisor_service[tilestache]', :delayed

@@ -11,6 +11,7 @@ chef_gem 'json'
 require 'json'
 
 # dependencies
+#
 case node[:platform_family]
 when 'debian'
   %w(python-pip python-gdal python-shapely python-psycopg2 python-memcache).each do |p|
@@ -32,7 +33,7 @@ end
 
 python_pip 'tilestache' do
   action :install
-  version "#{node[:tilestache][:version]}"
+  version node[:tilestache][:version]
 end
 
 include_recipe 'tilestache::gunicorn'
@@ -59,4 +60,3 @@ tilestacherc 'tilestache-config' do
 end
 
 include_recipe 'tilestache::apache'
-

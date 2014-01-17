@@ -9,8 +9,8 @@ define :tilestacherc, :reload => :delayed do
     owner node[:tilestache][:user]
     group node[:tilestache][:group]
     mode 0644
-    source "#{node[:tilestache][:config][:source_file]}"
-    cookbook "#{node[:tilestache][:config][:source_cookbook]}"
+    source node[:tilestache][:config][:source_file]
+    cookbook node[:tilestache][:config][:source_cookbook]
     notifies :restart, 'service[tilestache]', params[:reload]
     action :create
   end
