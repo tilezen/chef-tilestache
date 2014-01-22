@@ -12,15 +12,11 @@ Usage
 
 It's recommended that you use a wrapper cookbook with tilestache. The setup
 is very simple: a single recipe that does an ```include_recipe tilestache```,
-and a single attribute, default[:tilestache][:config_file_hash], which will contain
-a hash to be converted to json for you config. Example below:
+and two attributes, default[:tilestache][:config][:source_file], which will reference
+the template that you'd like to use for tilestache, and the cookbook it's located in, e.g.
 
-```
-default[:tilestache][:config_file_hash] = {
-  "cache" => { "name" => "Test", "verbose" => "true" },
-  "layers" => { "vector-postgis-points" => { "provider" => { "name" => "vector", "driver" => "PostgreSQL", "parameters" => { "dbname" => "gis", "user" => "gisuser", "password" => "some_secret_stuff_here", "table" => "planet_osm_point", "host" => "mypostgis.server.com" } } } }
-}
-```
+``` default[:tilestache][:config][:source_file] = 'tilestache-dev.conf.erb' ```
+``` default[:tilestache][:config][:source_cookbook] = 'mapzen_tilestache' ```
 
 Supported Platforms
 -------------------
