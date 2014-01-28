@@ -1,6 +1,6 @@
 <VirtualHost *:<%= @params[:port] %>>
   ServerName <%= @params[:server_name] %>
-  DocumentRoot /var/www/canvas-map
+  DocumentRoot /srv/www
   ProxyRequests off
   ProxyPass <%= @params[:base_uri] %> http://<%= node[:ipaddress] %>:<%= @params[:proxy_port] %>/ max=<%= @params[:max] %> ttl=<%= @params[:ttl] %> retry=<%= @params[:retrytimeout] %> connectiontimeout=<%= @params[:connectiontimeout] %> timeout=<%= @params[:requesttimeout] %>
 
@@ -19,10 +19,5 @@
     Allow from all
   </Location>
 
-<% if @params[:canvas_map] == true -%>
-  <Directory /var/www/canvas-map>
-    Options Indexes FollowSymlinks
-  </Directory>
-<% end -%>
 </VirtualHost>
 
