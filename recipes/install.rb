@@ -31,9 +31,27 @@ when 'rhel'
   end
 end
 
-python_pip 'tilestache' do
-  action :install
-  version node[:tilestache][:version]
+case node[:tilestache][:install_method]
+when 'pip'
+  python_pip 'tilestache' do
+    action :install
+    version node[:tilestache][:version]
+  end
+when 'git'
+  bash 'install-tilestache-source' do
+    action :nothing
+    code <<-EOH
+      cd "#{node[:tilestache][:source_install_dir]}"
+      python setup.py install
+    EOH
+  end
+
+  git node[:tilestache][:source_install_dir do
+    repository node[:tilestache][:git_repository]
+    reference node[:app_name][:git_revision]
+    action :sync
+    notifies :run, 'bash[install-tilestache-source]'
+  end
 end
 
 include_recipe 'tilestache::gunicorn'

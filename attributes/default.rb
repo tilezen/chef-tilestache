@@ -18,6 +18,10 @@ default[:tilestache][:user_keygen]        = false
 default[:tilestache][:apache_proxy]       = true
 default[:tilestache][:uid]                = nil
 default[:tilestache][:gid]                = nil
+default[:tilestache][:install_method]     = 'pip'
+default[:tilestache][:git_repository]     = 'https://github.com/mapzen/TileStache.git'
+default[:tilestache][:git_revision]       = 'master'
+default[:tilestache][:source_install_dir] = '/opt/tilestache_source'
 
 # python
 default[:python][:install_method] = 'package'
