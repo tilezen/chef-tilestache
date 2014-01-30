@@ -46,9 +46,9 @@ when 'git'
     EOH
   end
 
-  git node[:tilestache][:source_install_dir do
+  git node[:tilestache][:source_install_dir] do
     repository node[:tilestache][:git_repository]
-    reference node[:app_name][:git_revision]
+    reference node[:tilestache][:git_revision]
     action :sync
     notifies :run, 'bash[install-tilestache-source]'
   end
