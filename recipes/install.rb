@@ -14,21 +14,21 @@ require 'json'
 #
 case node[:platform_family]
 when 'debian'
-  %w(python-pip python-gdal python-shapely python-psycopg2 python-memcache python-modestmaps python-protobuf python-images).each do |p|
+  %w(python-pip python-gdal python-shapely python-psycopg2 python-memcache python-modestmaps python-protobuf).each do |p|
     package p do
       action :install
     end
   end
 
-  #python_pip 'image'
+  python_pip 'image'
 when 'rhel'
-  %w(python-pip gdal-python python-psycopg2 python-memcached python-modestmaps python-protobuf python-images).each do |p|
+  %w(python-pip gdal-python python-psycopg2 python-memcached python-modestmaps python-protobuf).each do |p|
     package p do
       action :install
     end
   end
 
-  #python_pip 'image'
+  python_pip 'image'
   python_pip 'Shapely'
 end
 
