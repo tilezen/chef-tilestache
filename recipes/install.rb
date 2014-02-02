@@ -78,4 +78,3 @@ tilestacherc 'tilestache-config' do
   end
 end
 
-include_recipe 'tilestache::apache'

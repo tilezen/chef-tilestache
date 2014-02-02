@@ -3,7 +3,6 @@ site :opscode
 cookbook 'apt'
 cookbook 'git'
 cookbook 'ohai'
-cookbook 'apache2'
 cookbook 'runit'
 cookbook 'ulimit'
 cookbook 'python', '= 1.3.6'

@@ -32,10 +32,6 @@ Attributes
 ----------
 ### tilestache
 
-#### apache_proxy
-Configures Apaache on :80 as a reverse proxy
-* default: true
-
 #### filehandle_limit
 Ulimit setting for open files permitted to the user configured to run tilestache (default: 20480)
 
@@ -120,35 +116,6 @@ Number of workers to spawn
 * default: node.cpu.total
 
 
-### tilestache.apache
-
-#### server_name
-Apache server name
-* default: tilestache
-
-#### proxy_port
-Apache listen port for the proxy
-* default: 8000
-
-#### max
-Max connection limit
-* default: 20
-
-#### ttl
-TTL for idle connections in seconds
-* default: 300
-
-#### retrytimeout
-The proxy will attempt to reconnect to the gunicorn backend,
-this is the retry timeout for those attempts in seconds
-* default: 3
-
-#### connectiontimeout
-The timeout on apache trying to connect to the gunicorn backend
-in seconds.
-* default: 3
-
-
 Dependencies
 -----------
 * gunicorn, python, ulimit, user
@@ -167,7 +134,7 @@ Installation
 
 #### What did that just do?
 * installed berkshelf, installed our cookbook dependencies, and booted a virtualbox machine
-* access the running tilestache instance: via http://localhost:8000 (gunicorn directly), or http://localhost:8080 (apache)
+* access the running tilestache instance: via http://localhost:8000/
 * NOTE: on centos, you'll need to deal with the default firewall on your own (either shut it down via ```service iptables stop```,
 or add custom firewall rules as you see fit
 
