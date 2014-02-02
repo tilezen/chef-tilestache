@@ -15,7 +15,7 @@
   <Location <%= @params[:base_uri] %>>
     Header set Access-Control-Allow-Origin "*"
     SetOutputFilter DEFLATE
-    Header set Cache-Control "max-age=<%= @params[:max_age] %>"
+    #Header set Cache-Control "max-age=<%= @params[:max_age] %>"
     Order allow,deny
     Allow from all
   </Location>
