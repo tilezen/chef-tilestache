@@ -1,0 +1,24 @@
+<VirtualHost *:<%= @params[:port] %>>
+  ServerName <%= @params[:server_name] %>
+  DocumentRoot /srv/www
+  Options None
+  ProxyRequests off
+  ProxyPass <%= @params[:base_uri] %> http://<%= node[:ipaddress] %>:<%= @params[:proxy_port] %>/ max=<%= @params[:max] %> ttl=<%= @params[:ttl] %> retry=<%= @params[:retrytimeout] %> connectiontimeout=<%= @params[:connectiontimeout] %> timeout=<%= @params[:requesttimeout] %>
+
+  # logs
+  LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+  LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" proxy
+  SetEnvIf X-Forwarded-For "^.*\..*\..*\..*" forwarded
+  CustomLog ${APACHE_LOG_DIR}/tilestache_access.log combined env=!forwarded
+  CustomLog ${APACHE_LOG_DIR}/tilestache_access.log proxy env=forwarded
+
+  <Location <%= @params[:base_uri] %>>
+    Header set Access-Control-Allow-Origin "*"
+    SetOutputFilter DEFLATE
+    Header set Cache-Control "max-age=<%= @params[:max_age] %>"
+    Order allow,deny
+    Allow from all
+  </Location>
+
+</VirtualHost>
+
