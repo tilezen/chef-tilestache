@@ -1,0 +1,5 @@
+#!/bin/bash
+
+exec 2>&1
+exec chpst -u <%= node[:tilestache][:user] %> kill -9 $(cat <%= node[:tilestache][:gunicorn][:piddir] %>/<%= node[:tilestache][:gunicorn][:pidfile] %>)
+
