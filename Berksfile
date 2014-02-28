@@ -1,14 +1,15 @@
-site :opscode
+metadata
+
+# opsworks
+cookbook 'apache2', github: 'aws/opsworks-cookbooks', branch: 'master-chef-11.4', rel: 'apache2'
+cookbook 'runit'  , github: 'aws/opsworks-cookbooks', branch: 'master-chef-11.4', rel: 'runit'
 
 cookbook 'apt'
 cookbook 'git'
 cookbook 'ohai'
-cookbook 'apache2'
-cookbook 'runit'
+cookbook 'user'
 cookbook 'ulimit'
-cookbook 'python', '= 1.3.6'
 cookbook 'supervisor'
+cookbook 'python', '= 1.3.6'
 cookbook 'gunicorn', '= 1.1.0'
-cookbook 'user', git: 'git@github.com:fnichol/chef-user.git'
-cookbook 'tilestache', :path => '.'
 
