@@ -3,8 +3,7 @@ load 'spec/support/matchers/runit_service.rb'
 describe 'tilestache::runit' do
   let (:chef_run) { ChefSpec::Runner.new(
     platform: 'ubuntu',
-    version:  '12.04',
-    log_level: :debug
+    version:  '12.04'
   ).converge(described_recipe) }
 
   it 'should include recipe runit::default' do
