@@ -5,7 +5,7 @@ describe 'tilestache::service' do
   ).converge(described_recipe) }
 
   it 'should create file from template /etc/init.d/tilestache' do
-    expect(chef_run).to create_template('/etc/init.d/tilestache').with(owner: 'root', group: 'root', mode: '0755', source: 'tilestache-init.erb')
+    chef_run.should create_template('/etc/init.d/tilestache').with(owner: 'root', group: 'root', mode: '0755', source: 'tilestache-init.erb')
   end
 
   it 'should enable the tilestache service' do
