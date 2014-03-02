@@ -1,4 +1,4 @@
-#load 'spec/support/matchers/supervisor_service.rb'
+require 'spec_helper'
 
 describe 'tilestache::supervisor' do
   let (:chef_run) { ChefSpec::Runner.new(

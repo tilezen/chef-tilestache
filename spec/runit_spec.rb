@@ -1,4 +1,4 @@
-load 'spec/support/matchers/runit_service.rb'
+require 'spec_helper'
 
 describe 'tilestache::runit' do
   let (:chef_run) { ChefSpec::Runner.new(

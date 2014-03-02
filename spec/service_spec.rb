@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe 'tilestache::service' do
   let (:chef_run) { ChefSpec::Runner.new(
     platform: 'ubuntu',

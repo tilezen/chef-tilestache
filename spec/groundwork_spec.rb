@@ -1,4 +1,4 @@
-load 'spec/support/matchers/user_account.rb'
+require 'spec_helper'
 
 describe 'tilestache::groundwork' do
   let(:chef_run) { ChefSpec::Runner.new(platform: 'ubuntu', version:  '12.04').converge(described_recipe) }

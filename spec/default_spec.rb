@@ -1,5 +1,4 @@
-require 'chefspec'
-require 'chefspec/berkshelf'
+require 'spec_helper'
 
 describe 'tilestache::default' do
   let (:chef_run) { ChefSpec::Runner.new(
