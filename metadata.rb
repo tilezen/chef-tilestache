@@ -4,7 +4,7 @@ maintainer_email 'grant@mapzen.com'
 license          'All rights reserved'
 description      'Installs/Configures tilestache'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.9.22'
+version          '0.10.0'
 
 recipe 'tilestache', 'Installs tilestache'
 
@@ -23,6 +23,6 @@ recipe 'tilestache', 'Installs tilestache'
   depends dep
 end
 
-%w{ redhat centos ubuntu }.each do |os|
+%w{ ubuntu }.each do |os|
   supports os
 end

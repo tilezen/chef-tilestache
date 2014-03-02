@@ -12,25 +12,13 @@ require 'json'
 
 # dependencies
 #
-case node[:platform_family]
-when 'debian'
-  %w(python-pip python-gdal python-shapely python-psycopg2 python-memcache python-modestmaps python-protobuf).each do |p|
-    package p do
-      action :install
-    end
+%w(python-pip python-gdal python-shapely python-psycopg2 python-memcache python-modestmaps python-protobuf).each do |p|
+  package p do
+    action :install
   end
-
-  python_pip 'image'
-when 'rhel'
-  %w(python-pip gdal-python python-psycopg2 python-memcached python-modestmaps python-protobuf).each do |p|
-    package p do
-      action :install
-    end
-  end
-
-  python_pip 'image'
-  python_pip 'Shapely'
 end
+
+python_pip 'image'
 
 case node[:tilestache][:install_method]
 when 'pip'
@@ -79,3 +67,4 @@ tilestacherc 'tilestache-config' do
 end
 
 include_recipe 'tilestache::apache'
+

@@ -20,7 +20,7 @@ the template that you'd like to use for tilestache, and the cookbook it's locate
 
 Supported Platforms
 -------------------
-Tested on Ubuntu12.04LTS and CentOS 6.4. You can probably get away with distributions similar to those, but as yet
+Tested on Ubuntu12.04LTS. You can probably get away with distributions similar to those, but as yet
 they have not been tested.
 
 Requirements
@@ -168,8 +168,6 @@ Installation
 #### What did that just do?
 * installed berkshelf, installed our cookbook dependencies, and booted a virtualbox machine
 * access the running tilestache instance: via http://localhost:8000 (gunicorn directly), or http://localhost:8080 (apache)
-* NOTE: on centos, you'll need to deal with the default firewall on your own (either shut it down via ```service iptables stop```,
-or add custom firewall rules as you see fit
 
 #### I don't like Vagrant
 * well then sir, provision an Ubuntu12.04 LTS system with the provider of your choice, and then bootstrap with chef-solo:

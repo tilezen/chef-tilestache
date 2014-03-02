@@ -7,13 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-# include apt on debian distros
-case node[:platform_family]
-when 'debian'
-  include_recipe 'apt'
-when 'rhel'
-  include_recipe 'tilestache::epel'
-end
+include_recipe 'apt'
 
 %w(
   git
