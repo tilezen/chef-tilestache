@@ -7,7 +7,9 @@ Dir.glob('spec/support/matchers/*.rb') do |custom_matcher|
 end
 
 RSpec.configure do |config|
-  # some (optional) config here
+  config.log_level  = :error
+  config.platform   = 'ubuntu'
+  config.version    = '12.04'
 end
 
 #at_exit { ChefSpec::Coverage.report! }

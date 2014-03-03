@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'tilestache::apache' do
   context 'include proxy' do
     let(:chef_run) do
-      ChefSpec::Runner.new(platform: 'ubuntu', version:  '12.04', log_level: :debug) do |node|
+      ChefSpec::Runner.new do |node|
         node.set[:tilestache][:apache_proxy] = true
       end.converge(described_recipe)
     end

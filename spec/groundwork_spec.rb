@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'tilestache::groundwork' do
-  let(:chef_run) { ChefSpec::Runner.new(platform: 'ubuntu', version:  '12.04').converge(described_recipe) }
+  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'should create the user tilestache' do
     chef_run.should create_user_account('tilestache')

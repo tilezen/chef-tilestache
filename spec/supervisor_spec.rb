@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 describe 'tilestache::supervisor' do
-  let (:chef_run) { ChefSpec::Runner.new(
-    platform: 'ubuntu',
-    version:  '12.04'
-  ).converge(described_recipe) }
+  let (:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   before do
     stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
