@@ -11,7 +11,9 @@ define :tilestacherc, :reload => :delayed do
     mode 0644
     source node[:tilestache][:config][:source_file]
     cookbook node[:tilestache][:config][:source_cookbook]
-    notifies :restart, 'service[tilestache]', params[:reload]
+    if node[:tilestache][:init_type]
+      notifies :restart, 'service[tilestache]', params[:reload]
+    end
     action :create
   end
 end
