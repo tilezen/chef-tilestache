@@ -7,8 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
-service 'tilestache' do
-  action :nothing
+if node[:tilestache][:init_type]
+  service 'tilestache' do
+    action :nothing
+  end
 end
 
 python_pip 'gunicorn' do
@@ -39,10 +41,12 @@ gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/#{node[:tilestache
   worker_timeout      node[:tilestache][:gunicorn][:timeout]
   worker_class        node[:tilestache][:gunicorn][:worker_class]
   
-  case node[:tilestache][:supervisor]
-  when true
-    notifies :restart, 'supervisor_service[tilestache]', :delayed
-  else
-    notifies :restart, 'service[tilestache]', :delayed
+  if node[:tilestache][:init_type]
+    case node[:tilestache][:supervisor]
+    when true
+      notifies :restart, 'supervisor_service[tilestache]', :delayed
+    else
+      notifies :restart, 'service[tilestache]', :delayed
+    end
   end
 end
