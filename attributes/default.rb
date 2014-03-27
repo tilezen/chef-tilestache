@@ -3,6 +3,7 @@
 # Attributes:: default
 #
 
+default[:tilestache][:config][:include]          = true
 default[:tilestache][:config][:source_cookbook]  = 'tilestache'
 default[:tilestache][:config][:source_file]      = 'tilestache.conf.erb'
 

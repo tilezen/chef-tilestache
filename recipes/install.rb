@@ -56,14 +56,17 @@ when 'sysv'
   include_recipe 'tilestache::service'
 end
 
-tilestacherc 'tilestache-config' do
-  cookbook node[:tilestache][:config][:cookbook]
-  if node[:tilestache][:init_type]
-    case node[:tilestache][:supervisor]
-    when true
-      notifies :restart, 'supervisor_service[tilestache]', :delayed
-    else
-      notifies :restart, 'service[tilestache]', :delayed
+case node[:tilestache][:config][:include]
+when true
+  tilestacherc 'tilestache-config' do
+    cookbook node[:tilestache][:config][:cookbook]
+    if node[:tilestache][:init_type]
+      case node[:tilestache][:supervisor]
+      when true
+        notifies :restart, 'supervisor_service[tilestache]', :delayed
+      else
+        notifies :restart, 'service[tilestache]', :delayed
+      end
     end
   end
 end
