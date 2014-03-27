@@ -12,7 +12,15 @@ require 'json'
 
 # dependencies
 #
-%w(python-pip python-gdal python-shapely python-psycopg2 python-memcache python-modestmaps python-protobuf).each do |p|
+%w(
+  python-pip
+  python-gdal
+  python-shapely
+  python-psycopg2
+  python-memcache
+  python-modestmaps
+  python-protobuf
+).each do |p|
   package p do
     action :install
   end
