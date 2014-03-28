@@ -18,6 +18,7 @@ require 'json'
   python-shapely
   python-psycopg2
   python-memcache
+  python-redis
   python-modestmaps
   python-protobuf
 ).each do |p|
