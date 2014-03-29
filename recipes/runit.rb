@@ -10,7 +10,9 @@
 include_recipe 'runit'
 
 runit_service 'tilestache' do
-  finish_script true
+  log             true
+  finish          true
+  default_logger  true
   action [:enable, :start]
 end
 
