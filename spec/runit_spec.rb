@@ -11,8 +11,4 @@ describe 'tilestache::runit' do
     chef_run.should create_template '/etc/sv/tilestache/run'
   end
 
-  it 'should create the service finish template' do
-    chef_run.should create_template '/etc/sv/tilestache/finish'
-  end
-
 end
