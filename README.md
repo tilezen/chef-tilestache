@@ -1,6 +1,10 @@
 Tilestache Chef Cookbook
 ===================
 
+Current Build Status
+--------------------
+[![Build Status](https://secure.travis-ci.org/heffergm/chef-tilestache.png)](http://travis-ci.org/heffergm/chef-tilestache)
+
 Description
 -----------
 Installs tilestache running under gunicorn, provides a vagrant environment for iterative testing
