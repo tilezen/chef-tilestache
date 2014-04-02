@@ -3,10 +3,6 @@ require 'spec_helper'
 describe 'tilestache::install' do
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
-  it 'should install json as a chef_gem' do
-    chef_run.should install_chef_gem 'json'
-  end
-
   %w(
     python-pip
     python-gdal
