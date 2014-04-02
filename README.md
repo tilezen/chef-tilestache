@@ -3,7 +3,7 @@ Tilestache Chef Cookbook
 
 Current Build Status
 --------------------
-[![Build Status](https://secure.travis-ci.org/heffergm/chef-tilestache.png)](http://travis-ci.org/heffergm/chef-tilestache)
+[![Build Status](https://secure.travis-ci.org/mapzen/chef-tilestache.png)](http://travis-ci.org/mapzen/chef-tilestache)
 
 Description
 -----------
