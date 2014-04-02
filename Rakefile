@@ -5,12 +5,18 @@ task :travis do
   sandbox = File.join(File.dirname(__FILE__), %w{tmp foodcritic cookbook})
   prepare_sandbox(sandbox)
 
+  # Fail the build only for correctness
+  #
   puts "Running foodcritic..."
-  sh "foodcritic --chef-version 11.10 #{File.dirname(sandbox)}"
+  sh "foodcritic --chef-version 11.10 --epic-fail correctness #{File.dirname(sandbox)}"
 
+  # Check ruby syntax
+  #
   puts "Running rubocop..."
   sh "rubocop #{File.dirname(sandbox)}"
 
+  # Run specs
+  #
   puts "Running rspec..."
   sh "rspec #{File.dirname(sandbox)}"
 end

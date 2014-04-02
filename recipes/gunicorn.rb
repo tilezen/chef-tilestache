@@ -7,10 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
-if node[:tilestache][:init_type] != 'false'
-  service 'tilestache' do
-    action :nothing
-  end
+service 'tilestache' do
+  action :nothing
 end
 
 python_pip 'gunicorn' do
