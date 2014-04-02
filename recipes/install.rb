@@ -63,15 +63,15 @@ when 'sysv'
 end
 
 # include a sample tilestache cfg for testing?
-#
+#   Override the default of false if so.
 case node[:tilestache][:config][:include_sample]
 when true
-  tilestache_cfg "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
-    action          :create
-    owner           node[:tilestache][:user]
-    group           node[:tilestache][:group]
-    source_file     node[:tilestache][:config][:source_file]
-    source_cookbook node[:tilestache][:config][:source_cookbook]
+  template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
+    action :create
+    owner  node[:tilestache][:user]
+    group  node[:tilestache][:group]
+    source node[:tilestache][:config][:source_file]
+    notifies :restart, 'service[tilestache]', :delayed
   end
 end
 

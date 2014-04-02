@@ -72,7 +72,7 @@ Vagrant.configure("2") do |config|
     chef.json = {
       "tilestache" => {
         "config" => {
-          "include_sample" => "true"
+          "include_sample" => true
         }
       }
     }
