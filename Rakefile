@@ -1,5 +1,7 @@
 #!/usr/bin/env rake
 
+require 'rainbow/ext/string'
+
 desc "Run integration tests: foodcritic, rubocop, rspec"
 task :travis do
   sandbox = File.join(File.dirname(__FILE__), %w{tmp foodcritic cookbook})
@@ -7,17 +9,17 @@ task :travis do
 
   # Fail the build only for correctness
   #
-  puts "Running foodcritic..."
+  puts "\nRunning foodcritic...".color(:blue)
   sh "foodcritic --chef-version 11.10 --epic-fail correctness #{File.dirname(sandbox)}"
 
   # Check ruby syntax
   #
-  puts "Running rubocop..."
+  puts "Running rubocop...".color(:blue)
   sh "rubocop #{File.dirname(sandbox)}"
 
   # Run specs
   #
-  puts "Running rspec..."
+  puts "\nRunning rspec...".color(:blue)
   sh "rspec #{File.dirname(sandbox)}"
 end
 
@@ -28,8 +30,8 @@ private
 def prepare_sandbox(sandbox)
   files = %w(*.md *.rb attributes definitions files libraries providers recipes resources spec templates)
 
+  puts 'Preparing sandbox'.color(:blue)
   rm_rf sandbox
   mkdir_p sandbox
   cp_r Dir.glob("{#{files.join(',')}}"), sandbox
-  puts "\n\n"
 end
