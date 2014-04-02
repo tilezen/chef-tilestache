@@ -13,7 +13,6 @@ vendor/
 tmp/
 
 # Bundler
-Gemfile.lock
 bin/*
 .bundle/*
 vendor/
