@@ -9,17 +9,17 @@ task :travis do
 
   # Fail the build only for correctness
   #
-  puts "\nRunning foodcritic...".color(:blue)
+  puts "\nRunning foodcritic".color(:blue)
   sh "foodcritic --chef-version 11.10 --epic-fail correctness #{File.dirname(sandbox)}/cookbook"
 
   # Check ruby syntax
   #
-  puts "Running rubocop...".color(:blue)
+  puts "Running rubocop".color(:blue)
   sh "rubocop #{File.dirname(sandbox)}/cookbook"
 
   # Run specs
   #
-  puts "\nRunning rspec...".color(:blue)
+  puts "\nRunning rspec".color(:blue)
   sh "rspec #{File.dirname(sandbox)}/cookbook"
 end
 
