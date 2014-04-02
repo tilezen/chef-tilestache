@@ -2,9 +2,9 @@
 
 require 'rainbow/ext/string'
 
-desc "Run integration tests: foodcritic, rubocop, rspec"
+desc 'Run integration tests: foodcritic, rubocop, rspec'
 task :travis do
-  sandbox = File.join(File.dirname(__FILE__), %w{tmp cookbook})
+  sandbox = File.join(File.dirname(__FILE__), %w(tmp cookbook))
   prepare_sandbox(sandbox)
 
   # Fail the build only for correctness
@@ -14,7 +14,7 @@ task :travis do
 
   # Check ruby syntax
   #
-  puts "Running rubocop".color(:blue)
+  puts 'Running rubocop'.color(:blue)
   sh "rubocop #{File.dirname(sandbox)}/cookbook"
 
   # Run specs
@@ -28,7 +28,7 @@ task default: 'travis'
 private
 
 def prepare_sandbox(sandbox)
-  files = %w(*.md *.rb attributes definitions files libraries providers recipes resources spec templates)
+  files = %w(Rakefile *.md *.rb attributes definitions files libraries providers recipes resources spec templates)
 
   puts 'Preparing sandbox'.color(:blue)
   rm_rf sandbox
