@@ -28,7 +28,7 @@ action :create do
   source_file     = new_resource.source_file      || node[:tilestache][:config][:source_file]
   source_cookbook = new_resource.source_cookbook  || node[:tilestache][:config][:source_cookbook]
 
-  template install_path do
+  t = template install_path do
     action    :create
     mode      mode
     owner     owner
@@ -36,10 +36,12 @@ action :create do
     source    source_file
     cookbook  source_cookbook
   end
+  new_resource.updated_by_last_action(t.updated_by_last_action?)
 end
 
 action :delete do
-  template install_path do
+  t = template install_path do
     action :delete
   end
+  new_resource.updated_by_last_action(t.updated_by_last_action?)
 end

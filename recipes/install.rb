@@ -7,9 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-chef_gem 'json'
-require 'json'
-
 # dependencies
 #
 %w(
@@ -54,7 +51,7 @@ end
 
 include_recipe 'tilestache::gunicorn'
 
-# if supervisor, then don't install init service
+# init type
 #
 case node[:tilestache][:init_type]
 when 'supervisor'
@@ -65,7 +62,9 @@ when 'sysv'
   include_recipe 'tilestache::service'
 end
 
-case node[:tilestache][:config][:include]
+# include a sample tilestache cfg for testing?
+#
+case node[:tilestache][:config][:include_sample]
 when true
   tilestache_cfg "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
     action          :create
@@ -75,15 +74,5 @@ when true
     source_cookbook node[:tilestache][:config][:source_cookbook]
   end
 end
-    #cookbook node[:tilestache][:config][:cookbook]
-    #if node[:tilestache][:init_type]
-    #  case node[:tilestache][:supervisor]
-    #  when true
-    #    notifies :restart, 'supervisor_service[tilestache]', :delayed
-    #  else
-    #    notifies :restart, 'service[tilestache]', :delayed
-    #  end
-    #end
-  #end
 
 include_recipe 'tilestache::apache'

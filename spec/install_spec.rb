@@ -60,21 +60,4 @@ describe 'tilestache::install' do
     chef_run.should include_recipe 'tilestache::gunicorn'
   end
 
-  context 'include config file' do
-    let(:chef_run) do
-      ChefSpec::Runner.new do |node|
-        node.set[:tilestache][:config][:include] = true
-      end.converge(described_recipe)
-    end
-
-    it 'should create tilestache config from template' do
-      chef_run.should create_template('/etc/tilestache/tilestache.conf')
-    end
-
-    it 'should notify tilestache to restart' do
-      template = chef_run.template '/etc/tilestache/tilestache.conf'
-      expect(template).to notify('service[tilestache]').to(:restart).delayed
-    end
-  end
-
 end
