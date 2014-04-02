@@ -16,6 +16,6 @@ template '/etc/init.d/tilestache' do
 end
 
 service 'tilestache' do
-  supports :start => true, :stop => true, :restart => true, :status => true
-  action [ :enable ]
+  supports start: true, stop: true, restart: true, status: true
+  action [:enable]
 end

@@ -14,9 +14,7 @@ include_recipe 'apt'
   tilestache::groundwork
   python::package
 ).each do |r|
-  #python::pip
   include_recipe r
 end
 
 include_recipe 'tilestache::install'
-

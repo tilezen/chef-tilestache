@@ -32,4 +32,3 @@ describe 'tilestache::apache' do
   end
 
 end
-

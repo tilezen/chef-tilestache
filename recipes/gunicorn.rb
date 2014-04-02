@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-if node[:tilestache][:init_type]
+if node[:tilestache][:init_type] != 'false'
   service 'tilestache' do
     action :nothing
   end
@@ -30,7 +30,7 @@ when 'gevent'
 end
 
 gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/#{node[:tilestache][:gunicorn][:cfg_file]}" do
-  action :create
+  action              :create
   listen              "#{node[:ipaddress]}:#{node[:tilestache][:gunicorn][:port]}"
   pid                 "#{node[:tilestache][:gunicorn][:piddir]}/#{node[:tilestache][:gunicorn][:pidfile]}"
   backlog             node[:tilestache][:gunicorn][:backlog]
@@ -40,7 +40,7 @@ gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/#{node[:tilestache
   worker_keepalive    node[:tilestache][:gunicorn][:keepalive]
   worker_timeout      node[:tilestache][:gunicorn][:timeout]
   worker_class        node[:tilestache][:gunicorn][:worker_class]
-  
+
   if node[:tilestache][:init_type]
     case node[:tilestache][:supervisor]
     when true

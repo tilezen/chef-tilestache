@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'tilestache::default' do
-  let (:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'should not include the apt::default recipe' do
     chef_run.should_not include_recipe 'tilestache::epel'

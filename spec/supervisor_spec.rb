@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'tilestache::supervisor' do
-  let (:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   before do
     stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
@@ -13,12 +13,12 @@ describe 'tilestache::supervisor' do
 
   # NOTE: not sure what's up here, but these don't match.
   #   Opsworks runit cookbook weirdness???
-  #it 'should enable the tilestache runit service' do
-  #  chef_run.should enable_service('tilestache')
-  #end
+  # it 'should enable the tilestache runit service' do
+  #   chef_run.should enable_service('tilestache')
+  # end
 
-  #it 'should start the tilestache runit service' do
-  #  chef_run.should start_service('tilestache')
-  #end
+  # it 'should start the tilestache runit service' do
+  #   chef_run.should start_service('tilestache')
+  # end
 
 end

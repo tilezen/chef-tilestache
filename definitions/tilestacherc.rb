@@ -3,7 +3,7 @@
 # variables: Hash of instance variables to pass to the ERB template
 # template_cookbook: the cookbook in which the configuration resides
 # template_source: filename of the ERB configuration template, defaults to <LWRP Name>.conf.erb
-define :tilestacherc, :reload => :delayed do
+define :tilestacherc, reload: :delayed do
   params[:template_source] ||= "#{params[:name]}.conf.erb"
   template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
     owner node[:tilestache][:user]

@@ -1,0 +1,6 @@
+language: ruby
+gemfile:
+   - Gemfile
+rvm:
+  - 2.0.0
+script: bundle exec rake travis

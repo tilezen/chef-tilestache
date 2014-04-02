@@ -4,11 +4,11 @@ maintainer_email 'grant@mapzen.com'
 license          'All rights reserved'
 description      'Installs/Configures tilestache'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.11.0'
+version          '0.12.0'
 
 recipe 'tilestache', 'Installs tilestache'
 
-%w{
+%w(
   apache2
   apt
   git
@@ -19,10 +19,10 @@ recipe 'tilestache', 'Installs tilestache'
   ulimit
   user
   yum
-}.each do |dep|
+).each do |dep|
   depends dep
 end
 
-%w{ ubuntu }.each do |os|
+%w(ubuntu).each do |os|
   supports os
 end

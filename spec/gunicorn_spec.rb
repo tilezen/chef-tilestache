@@ -46,4 +46,3 @@ describe 'tilestache::gunicorn' do
   end
 
 end
-

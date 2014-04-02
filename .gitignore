@@ -10,6 +10,7 @@ Berksfile.lock
 *.un~
 /cookbooks
 vendor/
+tmp/
 
 # Bundler
 Gemfile.lock

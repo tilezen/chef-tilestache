@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe 'tilestache::install' do
-  let (:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'should install json as a chef_gem' do
     chef_run.should install_chef_gem 'json'
   end
 
-  packages = %w(
+  %w(
     python-pip
     python-gdal
     python-shapely
@@ -38,7 +38,7 @@ describe 'tilestache::install' do
       chef_run.should install_python_pip 'tilestache'
     end
   end
-  
+
   context 'install method git' do
     let(:chef_run) do
       ChefSpec::Runner.new do |node|
@@ -58,7 +58,7 @@ describe 'tilestache::install' do
 
   it 'should include recipe tilestache:gunicorn' do
     chef_run.should include_recipe 'tilestache::gunicorn'
-  end 
+  end
 
   context 'include config file' do
     let(:chef_run) do
@@ -78,4 +78,3 @@ describe 'tilestache::install' do
   end
 
 end
-

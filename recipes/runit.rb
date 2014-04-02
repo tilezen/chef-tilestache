@@ -15,4 +15,3 @@ runit_service 'tilestache' do
   default_logger  true
   action [:enable, :start]
 end
-
