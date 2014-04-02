@@ -4,7 +4,7 @@ maintainer_email 'grant@mapzen.com'
 license          'All rights reserved'
 description      'Installs/Configures tilestache'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.12.0'
+version          '0.13.0'
 
 recipe 'tilestache', 'Installs tilestache'
 
