@@ -1,8 +1,9 @@
-# reload: Reload tilestache so it notices the new service.  :delayed (default) or :immediately.
-# action: :enable To create the tilestache config (default), or :disable to remove it.
-# variables: Hash of instance variables to pass to the ERB template
-# template_cookbook: the cookbook in which the configuration resides
-# template_source: filename of the ERB configuration template, defaults to <LWRP Name>.conf.erb
+# reload:             reload tilestache so it notices the new service.  :delayed (default) or :immediately.
+# action:             use :enable to create the tilestache config (default), or :disable to remove it.
+# variables:          hash of instance variables to pass to the ERB template
+# template_cookbook:  the cookbook in which the configuration resides
+# template_source:    filename of the ERB configuration template, defaults to <LWRP Name>.conf.erb
+#
 define :tilestacherc, reload: :delayed do
   params[:template_source] ||= "#{params[:name]}.conf.erb"
   template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
