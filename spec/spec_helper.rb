@@ -1,6 +1,8 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
 
+ChefSpec::Coverage.start!
+
 # load custom matchers
 Dir.glob('spec/support/matchers/*.rb') do |custom_matcher|
   load "#{custom_matcher}"
