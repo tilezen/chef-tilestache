@@ -43,14 +43,14 @@ describe 'tilestache::install' do
       end.converge(described_recipe)
     end
 
-    it 'should pull the source from github' do
-      chef_run.should sync_git '/opt/tilestache_source'
-    end
-
     it 'should create a bash resource install-tilestache-source' do
       chef_run.should_not run_bash('install-tilestache-source').with(
         action: 'nothing'
       )
+    end
+
+    it 'should pull the source from github' do
+      chef_run.should sync_git '/opt/tilestache_source'
     end
 
     it 'should notify bash to build from source' do
@@ -83,6 +83,10 @@ describe 'tilestache::install' do
       template = chef_run.template '/etc/tilestache/tilestache.conf'
       expect(template).to notify('service[tilestache]').to(:restart).delayed
     end
+  end
+
+  it 'should include recipe tilestache::apache' do
+    chef_run.should include_recipe 'tilestache::apache'
   end
 
 end
