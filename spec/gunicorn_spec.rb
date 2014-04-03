@@ -1,18 +1,29 @@
 require 'spec_helper'
 
-describe 'tilestache::gunicorn' do
-  let(:chef_run) do
-    ChefSpec::Runner.new do |node|
-      node.set[:tilestache][:gunicorn_proxy] = true
-    end.converge(described_recipe)
-  end
+describe 'tilestache::default' do
+  context 'main config block' do
+    let(:chef_run) do
+      ChefSpec::Runner.new do |node|
+        node.set[:tilestache][:gunicorn_proxy]  = true
+      end.converge(described_recipe)
+    end
 
-  it 'should python_pip install gunicorn' do
-    chef_run.should install_python_pip 'gunicorn'
-  end
+    it 'should python_pip install gunicorn' do
+      chef_run.should install_python_pip('gunicorn').with(
+        version: '18.0'
+      )
+    end
 
-  it 'should create gunicorn config' do
-    chef_run.should create_gunicorn_config '/etc/tilestache/gunicorn.cfg'
+    it 'should create gunicorn config' do
+      chef_run.should create_gunicorn_config('/etc/tilestache/gunicorn.cfg').with(
+        pid:                  '/var/log/tilestache/pids/gunicorn.pid',
+        backlog:              2048,
+        preload_app:          false,
+        worker_max_requests:  0,
+        worker_keepalive:     5,
+        worker_class:         'sync'
+      )
+    end
   end
 
   context 'tornado worker class' do

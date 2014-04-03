@@ -7,10 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-service 'tilestache' do
-  action :nothing
-end
-
 python_pip 'gunicorn' do
   action :install
   version node[:tilestache][:gunicorn][:version]
