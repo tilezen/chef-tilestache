@@ -9,6 +9,7 @@ describe 'tilestache::install' do
     python-shapely
     python-psycopg2
     python-memcache
+    python-redis
     python-modestmaps
     python-protobuf
   ).each do |pkg|
@@ -44,6 +45,12 @@ describe 'tilestache::install' do
 
     it 'should pull the source from github' do
       chef_run.should sync_git '/opt/tilestache_source'
+    end
+
+    it 'should create a bash resource install-tilestache-source' do
+      chef_run.should_not run_bash('install-tilestache-source').with(
+        action: 'nothing'
+      )
     end
 
     it 'should notify bash to build from source' do

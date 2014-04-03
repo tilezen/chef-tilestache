@@ -3,22 +3,27 @@ require 'spec_helper'
 describe 'tilestache::supervisor' do
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
-  before do
-    stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
-  end
-
   it 'should include recipe supervisor::default' do
-    chef_run.should include_recipe('supervisor::default')
+    stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
+    chef_run.should include_recipe 'supervisor::default'
   end
 
-  # NOTE: not sure what's up here, but these don't match.
-  #   Opsworks runit cookbook weirdness???
-  # it 'should enable the tilestache runit service' do
-  #   chef_run.should enable_service('tilestache')
-  # end
-
-  # it 'should start the tilestache runit service' do
-  #   chef_run.should start_service('tilestache')
-  # end
+  it 'should enable the supervisor service tilestache' do
+    stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
+    chef_run.should enable_supervisor_service('tilestache').with(
+      autostart:      true,
+      startsecs:      3,
+      stopwaitsecs:   3,
+      stopsignal:     'TERM',
+      user:           'tilestache',
+      stdout_logfile: '/var/log/tilestache/supervisor.log',
+      stderr_logfile: '/var/log/tilestache/supervisor.log',
+      directory:      '/etc/tilestache',
+      command:        "/usr/local/bin/gunicorn \
+\"TileStache:WSGITileServer('/etc/tilestache/tilestache.conf')\" \
+--log-file /var/log/tilestache/gunicorn.log \
+-c /etc/tilestache/gunicorn.cfg"
+    )
+  end
 
 end
