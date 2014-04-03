@@ -2,3 +2,5 @@ LineLength:
   Max: 150
 SingleSpaceBeforeFirstArg:
   Enabled: false
+SpaceBeforeFirstArg:
+  Enabled: false
