@@ -8,14 +8,13 @@
 #
 
 template '/etc/init.d/tilestache' do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
-  source 'tilestache-init.erb'
+  owner   'root'
+  group   'root'
+  source  'tilestache-init.erb'
+  mode    0755
 end
 
 service 'tilestache' do
-  supports start: true, stop: true, restart: true, status: true
-  action [:enable]
+  action    [:enable]
+  supports  start: true, stop: true, restart: true, status: true
 end

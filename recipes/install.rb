@@ -29,7 +29,6 @@ python_pip 'image'
 case node[:tilestache][:install_method]
 when 'pip'
   python_pip 'tilestache' do
-    action :install
     version node[:tilestache][:version]
   end
 when 'git'
@@ -42,10 +41,10 @@ when 'git'
   end
 
   git node[:tilestache][:source_install_dir] do
-    repository node[:tilestache][:git_repository]
-    reference node[:tilestache][:git_revision]
-    action :sync
-    notifies :run, 'bash[install-tilestache-source]'
+    action      :sync
+    repository  node[:tilestache][:git_repository]
+    reference   node[:tilestache][:git_revision]
+    notifies    :run, 'bash[install-tilestache-source]'
   end
 end
 
@@ -67,11 +66,10 @@ end
 case node[:tilestache][:config][:include_sample]
 when true
   template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
-    action :create
-    owner  node[:tilestache][:user]
-    group  node[:tilestache][:group]
-    source node[:tilestache][:config][:source_file]
-    notifies :restart, 'service[tilestache]', :delayed
+    owner     node[:tilestache][:user]
+    group     node[:tilestache][:group]
+    source    node[:tilestache][:config][:source_file]
+    notifies  :restart, 'service[tilestache]', :delayed
   end
 end
 

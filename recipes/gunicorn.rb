@@ -8,23 +8,17 @@
 #
 
 python_pip 'gunicorn' do
-  action :install
   version node[:tilestache][:gunicorn][:version]
 end
 
 case node[:tilestache][:gunicorn][:worker_class]
 when 'tornado'
-  package 'python-tornado' do
-    action :install
-  end
+  package 'python-tornado'
 when 'gevent'
-  package 'python-gevent' do
-    action :install
-  end
+  package 'python-gevent'
 end
 
 gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/#{node[:tilestache][:gunicorn][:cfg_file]}" do
-  action              :create
   listen              "#{node[:ipaddress]}:#{node[:tilestache][:gunicorn][:port]}"
   pid                 "#{node[:tilestache][:gunicorn][:piddir]}/#{node[:tilestache][:gunicorn][:pidfile]}"
   backlog             node[:tilestache][:gunicorn][:backlog]

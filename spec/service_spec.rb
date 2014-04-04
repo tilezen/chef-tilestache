@@ -7,7 +7,7 @@ describe 'tilestache::service' do
     chef_run.should create_template('/etc/init.d/tilestache').with(
       owner:  'root',
       group:  'root',
-      mode:   '0755',
+      mode:   0755,
       source: 'tilestache-init.erb'
     )
   end
