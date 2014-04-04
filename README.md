@@ -189,6 +189,6 @@ Fork, create a feature branch, send a pull! Weeee...
 
 License and Authors
 -------------------
-License: MIT
+License: GPL
 Authors: grant@mapzen.com
 
