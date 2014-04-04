@@ -1,5 +1,6 @@
 Tilestache Chef Cookbook
 ===================
+Chef cookbook to install tilestache
 
 Current Build Status
 --------------------
