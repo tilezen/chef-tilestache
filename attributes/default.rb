@@ -5,8 +5,6 @@
 
 default[:tilestache][:config][:include_sample]   = false
 default[:tilestache][:config][:mode]             = 0644
-default[:tilestache][:config][:source_cookbook]  = 'tilestache'
-default[:tilestache][:config][:source_file]      = 'tilestache.conf.erb'
 
 default[:tilestache][:init_type]          = 'runit'
 default[:tilestache][:version]            = '1.49.8'

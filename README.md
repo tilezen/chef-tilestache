@@ -16,11 +16,7 @@ Usage
 
 It's recommended that you use a wrapper cookbook with tilestache. The setup
 is very simple: a single recipe that does an ```include_recipe tilestache```,
-and two attributes, default[:tilestache][:config][:source_file], which will reference
-the template that you'd like to use for tilestache, and the cookbook it's located in, e.g.
-
-``` default[:tilestache][:config][:source_file] = 'tilestache-dev.conf.erb' ```
-``` default[:tilestache][:config][:source_cookbook] = 'mapzen_tilestache' ```
+and provides a template to be placed in ```default[:tilestache][:cfg_path]```.
 
 Supported Platforms
 -------------------
