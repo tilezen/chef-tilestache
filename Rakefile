@@ -20,7 +20,7 @@ task :travis do
   # Run specs
   #
   puts "\nRunning rspec".color(:blue)
-  sh "rspec #{File.dirname(sandbox)}/cookbook"
+  sh "rspec --color --format progress #{File.dirname(sandbox)}/cookbook"
 end
 
 task default: 'travis'
