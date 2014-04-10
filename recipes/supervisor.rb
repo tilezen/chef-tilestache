@@ -9,6 +9,10 @@
 
 include_recipe 'supervisor'
 
+service 'tilestache' do
+  action :nothing
+end
+
 supervisor_service 'tilestache' do
   action          [:enable]
   autostart       true

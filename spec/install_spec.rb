@@ -63,6 +63,43 @@ describe 'tilestache::install' do
     chef_run.should include_recipe 'tilestache::gunicorn'
   end
 
+  context 'init type is supervisor' do
+    let(:chef_run) do
+      ChefSpec::Runner.new do |node|
+        node.set[:tilestache][:init_type] = 'supervisor'
+      end.converge(described_recipe)
+    end
+
+    it 'should include recipe tilestache::supervisor' do
+      stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
+      chef_run.should include_recipe 'tilestache::supervisor'
+    end
+  end
+
+  context 'init type is runit' do
+    let(:chef_run) do
+      ChefSpec::Runner.new do |node|
+        node.set[:tilestache][:init_type] = 'runit'
+      end.converge(described_recipe)
+    end
+
+    it 'should include recipe tilestache::runit' do
+      chef_run.should include_recipe 'tilestache::runit'
+    end
+  end
+
+  context 'init type is sysv' do
+    let(:chef_run) do
+      ChefSpec::Runner.new do |node|
+        node.set[:tilestache][:init_type] = 'sysv'
+      end.converge(described_recipe)
+    end
+
+    it 'should include recipe tilestache::sysv' do
+      chef_run.should include_recipe 'tilestache::service'
+    end
+  end
+
   context 'include sample config' do
     let(:chef_run) do
       ChefSpec::Runner.new do |node|
