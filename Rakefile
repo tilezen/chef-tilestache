@@ -3,7 +3,7 @@
 require 'rainbow/ext/string'
 
 desc 'Run integration tests: foodcritic, rubocop, rspec'
-task :travis do
+task :build do
   sandbox = File.join(File.dirname(__FILE__), %w(tmp cookbook))
   prepare_sandbox(sandbox)
 
@@ -23,7 +23,7 @@ task :travis do
   sh "rspec --color --format progress #{File.dirname(sandbox)}/cookbook"
 end
 
-task default: 'travis'
+task default: 'build'
 
 private
 
