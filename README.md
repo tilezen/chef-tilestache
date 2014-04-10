@@ -69,7 +69,6 @@ Whether to generate ssh keys for your tilestache user
 Group to run tilestache as
 * default: tilestache
 
-
 ### tilestache.gunicorn
 
 #### version
@@ -121,7 +120,6 @@ Preload application code before forking new processes
 Number of workers to spawn
 * default: node.cpu.total
 
-
 ### tilestache.apache
 
 #### server_name
@@ -150,11 +148,9 @@ The timeout on apache trying to connect to the gunicorn backend
 in seconds.
 * default: 3
 
-
 Dependencies
 -----------
 * gunicorn, python, ulimit, user
-
 
 Vagrant Environment
 ===================
@@ -191,4 +187,3 @@ License and Authors
 -------------------
 License: GPL
 Authors: grant@mapzen.com
-
