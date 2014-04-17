@@ -3,7 +3,7 @@ cache: bundler
 gemfile:
    - Gemfile
 rvm:
-  - 2.0.0
+  - 2.1.0
 script: bundle exec rake
 notifications:
   flowdock: 19033d7eeb112e650d25ab9ed8821084
