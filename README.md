@@ -180,5 +180,5 @@ Fork, create a feature branch, send a pull! Weeee...
 
 License and Authors
 -------------------
-License: GPL
-Authors: grant@mapzen.com
+* License: GPL
+* Authors: grant@mapzen.com
