@@ -52,25 +52,18 @@ include_recipe 'tilestache::gunicorn'
 
 # init type
 #
-case node[:tilestache][:init_type]
-when 'supervisor'
-  include_recipe 'tilestache::supervisor'
-when 'runit'
-  include_recipe 'tilestache::runit'
-when 'sysv'
-  include_recipe 'tilestache::service'
-end
+include_recipe 'tilestache::supervisor' if node[:tilestache][:init_type] == 'supervisor'
+include_recipe 'tilestache::runit'      if node[:tilestache][:init_type] == 'runit'
+include_recipe 'tilestache::service'    if node[:tilestache][:init_type] == 'sysv'
 
 # include a sample tilestache cfg for testing?
 #   Override the default of false if so.
-case node[:tilestache][:config][:include_sample]
-when true
-  template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
-    owner     node[:tilestache][:user]
-    group     node[:tilestache][:group]
-    source    node[:tilestache][:config][:source_file]
-    notifies  :restart, 'service[tilestache]', :delayed
-  end
+template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
+  owner     node[:tilestache][:user]
+  group     node[:tilestache][:group]
+  source    node[:tilestache][:config][:source_file]
+  notifies  :restart, 'service[tilestache]', :delayed
+  only_if   { node[:tilestache][:config][:include_sample] == true }
 end
 
 include_recipe 'tilestache::apache'
