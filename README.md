@@ -1,11 +1,6 @@
 Tilestache Chef Cookbook
 ===================
-
-Chef cookbook to install tilestache
-
-Current Build Status
---------------------
-[![Build Status](https://secure.travis-ci.org/mapzen/chef-tilestache.png)](http://travis-ci.org/mapzen/chef-tilestache)
+![Build Status](https://circleci.com/gh/mapzen/chef-tilestache.png?circle-token=fcbc5361e3bc88c354ebbbe4b4f8021eaf25b723)
 
 Description
 -----------
