@@ -19,5 +19,12 @@
     Allow from all
   </Location>
 
+  <Location /status>
+    SetHandler server-status
+    Order Deny,Allow
+    Deny from all
+    Allow from <%= @params[:allow_status_from] %>
+  </Location>
+
 </VirtualHost>
 

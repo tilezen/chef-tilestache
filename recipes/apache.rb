@@ -32,6 +32,7 @@ when true
     connectiontimeout node[:tilestache][:apache][:connectiontimeout]
     requesttimeout    node[:tilestache][:apache][:requesttimeout]
     base_uri          node[:tilestache][:apache][:base_uri]
+    allow_status_from node[:tilestache][:apache][:allow_status_from]
   end
 
   apache_site 'tilestache-proxy' do
