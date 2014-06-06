@@ -9,6 +9,7 @@ describe 'tilestache::install' do
     python-shapely
     python-psycopg2
     python-memcache
+    python-pylibmc
     python-redis
     python-modestmaps
     python-protobuf
