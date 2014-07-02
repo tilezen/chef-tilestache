@@ -4,27 +4,27 @@ describe 'tilestache::default' do
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'should not include the apt::default recipe' do
-    chef_run.should_not include_recipe 'tilestache::epel'
+    expect(chef_run).to_not include_recipe 'tilestache::epel'
   end
 
   it 'should include the apt::default recipe' do
-    chef_run.should include_recipe 'apt::default'
+    expect(chef_run).to include_recipe 'apt::default'
   end
 
   it 'should include the git::default recipe' do
-    chef_run.should include_recipe 'git::default'
+    expect(chef_run).to include_recipe 'git::default'
   end
 
   it 'should include the tilestache::groundwork recipe' do
-    chef_run.should include_recipe 'tilestache::groundwork'
+    expect(chef_run).to include_recipe 'tilestache::groundwork'
   end
 
   it 'should include the python::package recipe' do
-    chef_run.should include_recipe 'python::package'
+    expect(chef_run).to include_recipe 'python::package'
   end
 
   it 'should include the tilestache::install recipe' do
-    chef_run.should include_recipe 'python::package'
+    expect(chef_run).to include_recipe 'python::package'
   end
 
 end

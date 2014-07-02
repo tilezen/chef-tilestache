@@ -4,7 +4,7 @@ describe 'tilestache::service' do
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'should create file from template /etc/init.d/tilestache' do
-    chef_run.should create_template('/etc/init.d/tilestache').with(
+    expect(chef_run).to create_template('/etc/init.d/tilestache').with(
       owner:  'root',
       group:  'root',
       mode:   0755,
@@ -13,7 +13,7 @@ describe 'tilestache::service' do
   end
 
   it 'should enable the tilestache service' do
-    chef_run.should enable_service('tilestache').with(
+    expect(chef_run).to enable_service('tilestache').with(
       supports: { start: true, stop: true, restart: true, status: true }
     )
   end

@@ -10,12 +10,12 @@ describe 'tilestache::apache' do
     end
 
     it 'should include recipe apache2::default' do
-      chef_run.should include_recipe 'apache2::default'
+      expect(chef_run).to include_recipe 'apache2::default'
     end
 
     %w(proxy expires proxy_http proxy_connect).each do |mod|
       it "should execute a2enmod #{mod}" do
-        chef_run.should run_execute "a2enmod #{mod}"
+        expect(chef_run).to run_execute "a2enmod #{mod}"
       end
     end
   end
@@ -28,7 +28,7 @@ describe 'tilestache::apache' do
     end
 
     it 'should not include recipe apache2::default' do
-      chef_run.should_not include_recipe 'apache2::default'
+      expect(chef_run).to_not include_recipe 'apache2::default'
     end
   end
 

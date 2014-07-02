@@ -8,7 +8,7 @@ describe 'tilestache::default' do
   end
 
   it 'should python_pip install gunicorn' do
-    chef_run.should install_python_pip('gunicorn').with(
+    expect(chef_run).to install_python_pip('gunicorn').with(
       version: '18.0'
     )
   end
@@ -20,10 +20,10 @@ describe 'tilestache::default' do
       end.converge(described_recipe)
 
       it 'should install tornado' do
-        chef_run.should install_package 'python-tornado'
+        expect(chef_run).to install_package 'python-tornado'
       end
       it 'should not install gevent' do
-        chef_run.should_not install_package 'python-gevent'
+        expect(chef_run).to_not install_package 'python-gevent'
       end
     end
   end
@@ -35,10 +35,10 @@ describe 'tilestache::default' do
       end.converge(described_recipe)
 
       it 'should install gevent' do
-        chef_run.should install_package 'python-gevent'
+        expect(chef_run).to install_package 'python-gevent'
       end
       it 'should not install tornado' do
-        chef_run.should_not install_package 'python-tornado'
+        expect(chef_run).to_not install_package 'python-tornado'
       end
     end
   end
@@ -46,7 +46,7 @@ describe 'tilestache::default' do
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'should create gunicorn config' do
-    chef_run.should create_gunicorn_config('/etc/tilestache/gunicorn.cfg').with(
+    expect(chef_run).to create_gunicorn_config('/etc/tilestache/gunicorn.cfg').with(
       pid:                  '/var/log/tilestache/pids/gunicorn.pid',
       backlog:              2048,
       preload_app:          false,

@@ -11,7 +11,7 @@ describe 'tilestache::groundwork' do
     end
 
     it 'should create the user tilestache' do
-      chef_run.should create_user_account('tilestache').with(
+      expect(chef_run).to create_user_account('tilestache').with(
         manage_home:  true,
         home:         '/home/tilestache',
         shell:        '/bin/false',
@@ -31,25 +31,25 @@ describe 'tilestache::groundwork' do
     end
 
     it 'should not create the user root' do
-      chef_run.should_not create_user_account('root')
+      expect(chef_run).to_not create_user_account('root')
     end
   end
 
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'should create the directory /etc/tilestache' do
-    chef_run.should create_directory('/etc/tilestache')
+    expect(chef_run).to create_directory('/etc/tilestache')
   end
 
   it 'should create the directory /var/log/tilestache' do
-    chef_run.should create_directory('/var/log/tilestache')
+    expect(chef_run).to create_directory('/var/log/tilestache')
   end
 
   it 'should create the directory /var/log/tilestache/pids' do
-    chef_run.should create_directory('/var/log/tilestache/pids')
+    expect(chef_run).to create_directory('/var/log/tilestache/pids')
   end
 
   it 'should create the template /etc/logrotate.d/tilestache' do
-    chef_run.should create_template('/etc/logrotate.d/tilestache').with(owner: 'root', group: 'root', mode: 0644)
+    expect(chef_run).to create_template('/etc/logrotate.d/tilestache').with(owner: 'root', group: 'root', mode: 0644)
   end
 end

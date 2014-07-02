@@ -15,12 +15,12 @@ describe 'tilestache::install' do
     python-protobuf
   ).each do |pkg|
     it "should install package #{pkg}" do
-      chef_run.should install_package pkg
+      expect(chef_run).to install_package pkg
     end
   end
 
   it 'should python_pip install image' do
-    chef_run.should install_python_pip 'image'
+    expect(chef_run).to install_python_pip 'image'
   end
 
   # install method switch
@@ -33,7 +33,7 @@ describe 'tilestache::install' do
     end
 
     it 'should python_pip tilestache' do
-      chef_run.should install_python_pip 'tilestache'
+      expect(chef_run).to install_python_pip 'tilestache'
     end
   end
 
@@ -45,13 +45,13 @@ describe 'tilestache::install' do
     end
 
     it 'should create a bash resource install-tilestache-source' do
-      chef_run.should_not run_bash('install-tilestache-source').with(
+      expect(chef_run).to_not run_bash('install-tilestache-source').with(
         action: 'nothing'
       )
     end
 
     it 'should pull the source from github' do
-      chef_run.should sync_git '/opt/tilestache_source'
+      expect(chef_run).to sync_git '/opt/tilestache_source'
     end
 
     it 'should notify bash to build from source' do
@@ -61,7 +61,7 @@ describe 'tilestache::install' do
   end
 
   it 'should include recipe tilestache:gunicorn' do
-    chef_run.should include_recipe 'tilestache::gunicorn'
+    expect(chef_run).to include_recipe 'tilestache::gunicorn'
   end
 
   context 'init type is supervisor' do
@@ -73,7 +73,7 @@ describe 'tilestache::install' do
 
     it 'should include recipe tilestache::supervisor' do
       stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
-      chef_run.should include_recipe 'tilestache::supervisor'
+      expect(chef_run).to include_recipe 'tilestache::supervisor'
     end
   end
 
@@ -85,7 +85,7 @@ describe 'tilestache::install' do
     end
 
     it 'should include recipe tilestache::runit' do
-      chef_run.should include_recipe 'tilestache::runit'
+      expect(chef_run).to include_recipe 'tilestache::runit'
     end
   end
 
@@ -97,7 +97,7 @@ describe 'tilestache::install' do
     end
 
     it 'should include recipe tilestache::sysv' do
-      chef_run.should include_recipe 'tilestache::service'
+      expect(chef_run).to include_recipe 'tilestache::service'
     end
   end
 
@@ -110,7 +110,7 @@ describe 'tilestache::install' do
     end
 
     it 'should create template tilestache.conf' do
-      chef_run.should create_template('/etc/tilestache/tilestache.conf').with(
+      expect(chef_run).to create_template('/etc/tilestache/tilestache.conf').with(
         owner:  'tilestache',
         group:  'tilestache',
         source: 'tilestache.conf.erb'
@@ -124,7 +124,7 @@ describe 'tilestache::install' do
   end
 
   it 'should include recipe tilestache::apache' do
-    chef_run.should include_recipe 'tilestache::apache'
+    expect(chef_run).to include_recipe 'tilestache::apache'
   end
 
 end

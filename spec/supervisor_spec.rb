@@ -5,12 +5,12 @@ describe 'tilestache::supervisor' do
 
   it 'should include recipe supervisor::default' do
     stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
-    chef_run.should include_recipe 'supervisor::default'
+    expect(chef_run).to include_recipe 'supervisor::default'
   end
 
   it 'should enable the supervisor service tilestache' do
     stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
-    chef_run.should enable_supervisor_service('tilestache').with(
+    expect(chef_run).to enable_supervisor_service('tilestache').with(
       autostart:      true,
       startsecs:      3,
       stopwaitsecs:   3,
