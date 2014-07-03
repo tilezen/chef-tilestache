@@ -9,6 +9,15 @@
 
 python_pip 'gunicorn' do
   version node[:tilestache][:gunicorn][:version]
+
+  if node[:tilestache][:init_type]
+    case node[:tilestache][:supervisor]
+    when true
+      notifies :restart, 'supervisor_service[tilestache]', :delayed
+    else
+      notifies :restart, 'service[tilestache]', :delayed
+    end
+  end
 end
 
 case node[:tilestache][:gunicorn][:worker_class]

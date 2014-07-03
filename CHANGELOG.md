@@ -1,6 +1,10 @@
 tilestache CHANGELOG
 ===================
 
+0.15.0
+------
+- gunicorn to 0.19.0
+
 0.14.1
 ------
 - also install python-pylibmc, as there are outstanding pull requests to support it in tilestache
