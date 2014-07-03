@@ -9,7 +9,7 @@ describe 'tilestache::default' do
 
   it 'should python_pip install gunicorn' do
     expect(chef_run).to install_python_pip('gunicorn').with(
-      version: '19.0'
+      version: '18.0'
     )
   end
 
