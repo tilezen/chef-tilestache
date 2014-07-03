@@ -3,7 +3,7 @@
 # Attributes:: gunicorn
 #
 
-default[:tilestache][:gunicorn][:version]      = '19.0'
+default[:tilestache][:gunicorn][:version]      = '18.0'
 default[:tilestache][:gunicorn][:backlog]      = 2048
 default[:tilestache][:gunicorn][:keepalive]    = 5
 default[:tilestache][:gunicorn][:max_requests] = 0
