@@ -13,37 +13,17 @@ describe 'tilestache::default' do
     )
   end
 
-  context 'tornado worker class' do
-    let(:chef_run) do
-      ChefSpec::Runner.new do |node|
-        node.set[:tilestache][:gunicorn][:worker_class] = 'tornado'
-      end.converge(described_recipe)
-
-      it 'should install tornado' do
-        expect(chef_run).to install_package 'python-tornado'
-      end
-      it 'should not install gevent' do
-        expect(chef_run).to_not install_package 'python-gevent'
-      end
-    end
+  it 'should install tornado if worker class is tornado' do
+    chef_run.node.set[:tilestache][:gunicorn][:worker_class] = 'tornado'
+    chef_run.converge(described_recipe)
+    expect(chef_run).to install_package 'python-tornado'
   end
 
-  context 'gevent worker class' do
-    let(:chef_run) do
-      ChefSpec::Runner.new do |node|
-        node.set[:tilestache][:gunicorn][:worker_class] = 'gevent'
-      end.converge(described_recipe)
-
-      it 'should install gevent' do
-        expect(chef_run).to install_package 'python-gevent'
-      end
-      it 'should not install tornado' do
-        expect(chef_run).to_not install_package 'python-tornado'
-      end
-    end
+  it 'should install gevent if worker class is gevent' do
+    chef_run.node.set[:tilestache][:gunicorn][:worker_class] = 'gevent'
+    chef_run.converge(described_recipe)
+    expect(chef_run).to install_package 'python-gevent'
   end
-
-  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'should create gunicorn config' do
     expect(chef_run).to create_gunicorn_config('/etc/tilestache/gunicorn.cfg').with(
@@ -52,7 +32,7 @@ describe 'tilestache::default' do
       preload_app:          false,
       worker_max_requests:  0,
       worker_keepalive:     5,
-      worker_class:         'sync'
+      worker_class:         'tornado'
     )
   end
 

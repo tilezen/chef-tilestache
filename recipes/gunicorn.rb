@@ -11,11 +11,14 @@ python_pip 'gunicorn' do
   version node[:tilestache][:gunicorn][:version]
 end
 
-case node[:tilestache][:gunicorn][:worker_class]
-when 'tornado'
-  package 'python-tornado'
-when 'gevent'
-  package 'python-gevent'
+package 'python-tornado' do
+  action :install
+  only_if { node[:tilestache][:gunicorn][:worker_class] == 'tornado' }
+end
+
+package 'python-gevent' do
+  action :install
+  only_if { node[:tilestache][:gunicorn][:worker_class] == 'gevent' }
 end
 
 gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/#{node[:tilestache][:gunicorn][:cfg_file]}" do
