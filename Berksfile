@@ -3,7 +3,6 @@ metadata
 
 # opsworks
 cookbook 'apache2', github: 'aws/opsworks-cookbooks', branch: 'release-chef-11.10', rel: 'apache2'
-
 cookbook 'apt'
 cookbook 'git'
 cookbook 'ohai'
