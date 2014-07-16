@@ -7,7 +7,7 @@ default[:tilestache][:config][:include_sample]   = false
 default[:tilestache][:config][:mode]             = 0644
 
 default[:tilestache][:init_type]          = 'runit'
-default[:tilestache][:version]            = '1.49.8'
+default[:tilestache][:version]            = '1.49.11'
 default[:tilestache][:filehandle_limit]   = 20_480
 default[:tilestache][:cfg_path]           = '/etc/tilestache'
 default[:tilestache][:cfg_file]           = 'tilestache.conf'
