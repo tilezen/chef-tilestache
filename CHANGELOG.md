@@ -1,6 +1,10 @@
 tilestache CHANGELOG
 ===================
 
+0.15.1
+------
+- upgrade default version to 1.49.11
+
 0.15.0
 ------
 - default to tornado rather than sync
