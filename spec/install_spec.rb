@@ -123,7 +123,17 @@ describe 'tilestache::install' do
     end
   end
 
-  it 'should include recipe tilestache::apache' do
+  it 'should not include recipe tilestache::apache if apache_proxy == false' do
+    chef_run.node.set[:tilestache][:apache_proxy] = false
+    chef_run.converge(described_recipe)
+
+    expect(chef_run).to_not include_recipe 'tilestache::apache'
+  end
+
+  it 'should include recipe tilestache::apache if apache_proxy == true' do
+    chef_run.node.set[:tilestache][:apache_proxy] = true
+    chef_run.converge(described_recipe)
+
     expect(chef_run).to include_recipe 'tilestache::apache'
   end
 
