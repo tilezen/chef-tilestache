@@ -1,6 +1,10 @@
 tilestache CHANGELOG
 ===================
 
+0.15.2
+------
+- clean up recipe logic
+
 0.15.1
 ------
 - upgrade default version to 1.49.11

@@ -27,26 +27,25 @@ end
 
 python_pip 'image'
 
-case node[:tilestache][:install_method]
-when 'pip'
-  python_pip 'tilestache' do
-    version node[:tilestache][:version]
-  end
-when 'git'
-  bash 'install-tilestache-source' do
-    action :nothing
-    code <<-EOH
-      cd "#{node[:tilestache][:source_install_dir]}"
-      python setup.py install
-    EOH
-  end
+python_pip 'tilestache' do
+  version node[:tilestache][:version]
+  only_if { node[:tilestache][:install_method] == 'pip' }
+end
 
-  git node[:tilestache][:source_install_dir] do
-    action      :sync
-    repository  node[:tilestache][:git_repository]
-    reference   node[:tilestache][:git_revision]
-    notifies    :run, 'bash[install-tilestache-source]'
-  end
+bash 'install-tilestache-source' do
+  action :nothing
+  code <<-EOH
+    cd "#{node[:tilestache][:source_install_dir]}"
+    python setup.py install
+  EOH
+end
+
+git node[:tilestache][:source_install_dir] do
+  action      :sync
+  repository  node[:tilestache][:git_repository]
+  reference   node[:tilestache][:git_revision]
+  notifies    :run, 'bash[install-tilestache-source]'
+  only_if { node[:tilestache][:install_method] == 'git' }
 end
 
 include_recipe 'tilestache::gunicorn'
@@ -67,4 +66,4 @@ template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
   only_if   { node[:tilestache][:config][:include_sample] == true }
 end
 
-include_recipe 'tilestache::apache'
+include_recipe 'tilestache::apache' if node[:tilestache][:apache_proxy] == true
