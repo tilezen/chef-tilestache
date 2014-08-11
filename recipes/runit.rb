@@ -14,4 +14,5 @@ runit_service 'tilestache' do
   log             true
   finish          true
   default_logger  true
+  sv_timeout      60
 end

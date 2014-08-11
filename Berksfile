@@ -12,4 +12,4 @@ cookbook 'ulimit'
 cookbook 'supervisor'
 cookbook 'python', '= 1.3.6'
 cookbook 'gunicorn', '= 1.1.0'
-
+cookbook 'windows', '= 1.32.0'

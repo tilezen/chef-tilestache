@@ -1,6 +1,10 @@
 tilestache CHANGELOG
 ===================
 
+0.15.3
+------
+- override default sv_timeout
+
 0.15.2
 ------
 - clean up recipe logic
