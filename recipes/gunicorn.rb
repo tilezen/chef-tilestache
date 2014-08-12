@@ -11,7 +11,7 @@ python_pip 'gunicorn' do
   version node[:tilestache][:gunicorn][:version]
 end
 
-package 'python-tornado' do
+python_pip 'tornado' do
   version node[:tilestache][:gunicorn][:tornado_version]
   only_if { node[:tilestache][:gunicorn][:worker_class] == 'tornado' }
 end
