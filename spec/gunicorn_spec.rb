@@ -13,10 +13,10 @@ describe 'tilestache::default' do
     )
   end
 
-  it 'should install tornado if worker class is tornado' do
+  it 'should pip_install tornado if worker class is tornado' do
     chef_run.node.set[:tilestache][:gunicorn][:worker_class] = 'tornado'
     chef_run.converge(described_recipe)
-    expect(chef_run).to install_package 'python-tornado'
+    expect(chef_run).to install_python_pip 'tornado'
   end
 
   it 'should install gevent if worker class is gevent' do
