@@ -1,6 +1,10 @@
 tilestache CHANGELOG
 ===================
 
+0.16.1
+------
+- don't run a finish script with runit
+
 0.16.0
 ------
 - upgrade to gunicorn 19.1.0
