@@ -1,6 +1,10 @@
 tilestache CHANGELOG
 ===================
 
+0.16.2
+------
+- call runit_service explicitly to restart when using runit
+
 0.16.1
 ------
 - don't run a finish script with runit

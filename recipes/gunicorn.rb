@@ -33,10 +33,12 @@ gunicorn_config "#{node[:tilestache][:gunicorn][:cfgbasedir]}/#{node[:tilestache
   worker_class        node[:tilestache][:gunicorn][:worker_class]
 
   if node[:tilestache][:init_type]
-    case node[:tilestache][:supervisor]
-    when true
+    case node[:tilestache][:init_type]
+    when 'supervisor'
       notifies :restart, 'supervisor_service[tilestache]', :delayed
-    else
+    when 'runit'
+      notifies :restart, 'runit_service[tilestache]', :delayed
+    when 'sysv'
       notifies :restart, 'service[tilestache]', :delayed
     end
   end
