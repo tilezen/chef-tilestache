@@ -1,6 +1,11 @@
 tilestache CHANGELOG
 ===================
 
+0.16.0
+------
+- upgrade to gunicorn 19.1.0
+- allow setting of tornado version, default 4.0.1
+
 0.15.3
 ------
 - override default sv_timeout
