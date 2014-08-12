@@ -5,6 +5,7 @@ tilestache CHANGELOG
 ------
 - upgrade to gunicorn 19.1.0
 - allow setting of tornado version, default 4.0.1
+- install tornado from pip
 
 0.15.3
 ------
