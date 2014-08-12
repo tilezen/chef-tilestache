@@ -10,7 +10,6 @@ describe 'tilestache::runit' do
   it 'should start and enable the runit service tilestache' do
     expect(chef_run).to start_runit_service('tilestache').with(
       log:            true,
-      finish:         true,
       default_logger: true,
       action:         [:enable, :start],
       sv_timeout:     60
