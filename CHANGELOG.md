@@ -1,6 +1,11 @@
 tilestache CHANGELOG
 ===================
 
+0.16.3
+------
+- make svwait configurable
+- increase default wait to 180 seconds
+
 0.16.2
 ------
 - call runit_service explicitly to restart when using runit
