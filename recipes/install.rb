@@ -58,12 +58,23 @@ include_recipe 'tilestache::service'    if node[:tilestache][:init_type] == 'sys
 
 # include a sample tilestache cfg for testing?
 #   Override the default of false if so.
+#
 template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
   owner     node[:tilestache][:user]
   group     node[:tilestache][:group]
   source    node[:tilestache][:config][:source_file]
-  notifies  :restart, 'service[tilestache]', :delayed
   only_if   { node[:tilestache][:config][:include_sample] == true }
+
+  if node[:tilestache][:init_type]
+    case node[:tilestache][:init_type]
+    when 'supervisor'
+      notifies :restart, 'supervisor_service[tilestache]', :delayed
+    when 'runit'
+      notifies :restart, 'runit_service[tilestache]', :delayed
+    when 'sysv'
+      notifies :restart, 'service[tilestache]', :delayed
+    end
+  end
 end
 
 include_recipe 'tilestache::apache' if node[:tilestache][:apache_proxy] == true

@@ -1,6 +1,10 @@
 tilestache CHANGELOG
 ===================
 
+0.16.4
+------
+- fix the tilestache config template restart resources
+
 0.16.3
 ------
 - make svwait configurable
