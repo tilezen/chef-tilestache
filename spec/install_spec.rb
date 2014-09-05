@@ -119,7 +119,7 @@ describe 'tilestache::install' do
 
     it 'should notify tilestache to restart' do
       template = chef_run.template '/etc/tilestache/tilestache.conf'
-      expect(template).to notify('service[tilestache]').to(:restart).delayed
+      expect(template).to notify('runit_service[tilestache]').to(:restart).delayed
     end
   end
 

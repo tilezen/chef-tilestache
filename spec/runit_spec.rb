@@ -12,7 +12,7 @@ describe 'tilestache::runit' do
       log:            true,
       default_logger: true,
       action:         [:enable, :start],
-      sv_timeout:     60
+      sv_timeout:     180
     )
   end
 
