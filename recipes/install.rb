@@ -19,13 +19,12 @@
   python-redis
   python-modestmaps
   python-protobuf
+  python-pil
 ).each do |p|
   package p do
     action :install
   end
 end
-
-python_pip 'image'
 
 python_pip 'tilestache' do
   version node[:tilestache][:version]
