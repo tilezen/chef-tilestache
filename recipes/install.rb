@@ -48,7 +48,7 @@ git node[:tilestache][:source_install_dir] do
   only_if { node[:tilestache][:install_method] == 'git' }
 end
 
-include_recipe 'tilestache::gunicorn'
+include_recipe 'tilestache::gunicorn'   if node[:tilestache][:gunicorn_server] == true
 
 # init type
 #

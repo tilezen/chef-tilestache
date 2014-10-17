@@ -33,6 +33,10 @@ Attributes
 Configures Apaache on :80 as a reverse proxy
 * default: true
 
+#### gunicorn_server
+Installs and configures the gunicorn server
+* default: true
+
 #### filehandle_limit
 Ulimit setting for open files permitted to the user configured to run tilestache (default: 20480)
 
