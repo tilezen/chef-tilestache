@@ -3,8 +3,12 @@ require 'spec_helper'
 describe 'tilestache::default' do
   let(:chef_run) do
     ChefSpec::Runner.new do |node|
-      node.set[:tilestache][:gunicorn_proxy]  = true
+      node.set[:tilestache][:gunicorn_server] = true
     end.converge(described_recipe)
+  end
+
+  it 'should include the gunicorn recipe' do
+    expect(chef_run).to include_recipe('tilestache::gunicorn')
   end
 
   it 'should python_pip install gunicorn' do
@@ -34,6 +38,13 @@ describe 'tilestache::default' do
       worker_keepalive:     5,
       worker_class:         'tornado'
     )
+  end
+
+  it 'should not install gunicorn if not enabled' do
+    chef_run.node.set[:tilestache][:gunicorn_server] = false
+    chef_run.converge(described_recipe)
+    expect(chef_run).to_not include_recipe('tilestache::gunicorn')
+    expect(chef_run).to_not install_python_pip('gunicorn')
   end
 
 end
