@@ -13,14 +13,11 @@ describe 'tilestache::install' do
     python-redis
     python-modestmaps
     python-protobuf
+    python-pil
   ).each do |pkg|
     it "should install package #{pkg}" do
       expect(chef_run).to install_package pkg
     end
-  end
-
-  it 'should python_pip install image' do
-    expect(chef_run).to install_python_pip 'image'
   end
 
   # install method switch
