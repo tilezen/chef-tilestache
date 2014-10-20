@@ -2,15 +2,29 @@
 # Cookbook Name:: tilestache
 # Recipe:: install
 #
-# Copyright 2013, Mapzen
-#
-# All rights reserved - Do Not Redistribute
-#
 
-# dependencies
-#
+# dev dependencies required for python packages
 %w(
-  python-pip
+  python-dev
+  libgeos-dev
+  libpq-dev
+).each do |p|
+  package p do
+    action :install
+  end
+end
+
+# all installation paths require pip to be installed
+package 'python-pip'
+
+# TileStache depends on Pillow/Pil conditionally based on if Pillow is
+# already pre-installed. Install Pillow up front to force the Pillow
+# dependency to be used.
+package 'python-pil'
+
+# if not installing from requirements file, use the debian packages to
+# pull in the necessary python package dependencies
+%w(
   python-gdal
   python-shapely
   python-psycopg2
@@ -19,10 +33,10 @@
   python-redis
   python-modestmaps
   python-protobuf
-  python-pil
 ).each do |p|
   package p do
     action :install
+    not_if { node[:tilestache][:install_method] == 'pip_requirements' }
   end
 end
 
@@ -47,6 +61,12 @@ git node[:tilestache][:source_install_dir] do
   only_if { node[:tilestache][:install_method] == 'git' }
 end
 
+# if installing from requirements file, all dependencies are assumed
+# to come from there, including the TileStache package itself
+include_recipe 'tilestache::pip_requirements' if node[:tilestache][:install_method] == 'pip_requirements'
+
+# optionally install gunicorn to support the workflow of only
+# installing TileStache itself
 include_recipe 'tilestache::gunicorn'   if node[:tilestache][:gunicorn_server] == true
 
 # init type

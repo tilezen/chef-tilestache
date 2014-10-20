@@ -57,6 +57,18 @@ describe 'tilestache::install' do
     end
   end
 
+  context 'install method pip_requirements' do
+    let(:chef_run) do
+      ChefSpec::Runner.new do |node|
+        node.set[:tilestache][:install_method] = 'pip_requirements'
+      end.converge(described_recipe)
+    end
+
+    it 'should include the pip_requirements install recipe' do
+      expect(chef_run).to include_recipe 'tilestache::pip_requirements'
+    end
+  end
+
   it 'should include recipe tilestache:gunicorn' do
     expect(chef_run).to include_recipe 'tilestache::gunicorn'
   end
