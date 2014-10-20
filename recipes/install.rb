@@ -2,10 +2,6 @@
 # Cookbook Name:: tilestache
 # Recipe:: install
 #
-# Copyright 2013, Mapzen
-#
-# All rights reserved - Do Not Redistribute
-#
 
 # dev dependencies required for python packages
 %w(

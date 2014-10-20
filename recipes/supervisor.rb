@@ -2,10 +2,6 @@
 # Cookbook Name:: tilestache
 # Recipe:: supervisor
 #
-# Copyright 2013, Mapzen
-#
-# All rights reserved - Do Not Redistribute
-#
 
 include_recipe 'supervisor'
 

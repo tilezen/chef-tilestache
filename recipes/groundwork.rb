@@ -2,10 +2,6 @@
 # Cookbook Name:: tilestache
 # Recipe:: groundwork
 #
-# Copyright 2013, Mapzen
-#
-# All rights reserved - Do Not Redistribute
-#
 
 # is someone tells us to run as root,
 #   don't muck with the account
