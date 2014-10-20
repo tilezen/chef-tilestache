@@ -40,6 +40,10 @@ Installs and configures the gunicorn server
 #### filehandle_limit
 Ulimit setting for open files permitted to the user configured to run tilestache (default: 20480)
 
+#### install_method
+How we should install tilestache: git, pip or pip_requirements
+* default: pip
+
 #### install_path
 Base location that will house conf/tilecache.cfg
 * default: /opt/tilestache
