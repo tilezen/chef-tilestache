@@ -71,7 +71,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       "tilestache" => {
-        "apache_proxy" => false,
         "config" => {
           "include_sample" => true
         }

@@ -9,7 +9,6 @@ version          '0.16.4'
 recipe 'tilestache', 'Installs tilestache'
 
 %w(
-  apache2
   apt
   git
   gunicorn
