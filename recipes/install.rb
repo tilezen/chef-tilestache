@@ -19,16 +19,12 @@
 end
 
 # all installation paths require pip to be installed
-package 'python-pip' do
-  action :install
-end
+package 'python-pip'
 
 # TileStache depends on Pillow/Pil conditionally based on if Pillow is
 # already pre-installed. Install Pillow up front to force the Pillow
 # dependency to be used.
-package 'python-pil' do
-  action :install
-end
+package 'python-pil'
 
 # if not installing from requirements file, use the debian packages to
 # pull in the necessary python package dependencies
