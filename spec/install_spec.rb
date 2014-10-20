@@ -14,6 +14,9 @@ describe 'tilestache::install' do
     python-modestmaps
     python-protobuf
     python-pil
+    python-dev
+    libgeos-dev
+    libpq-dev
   ).each do |pkg|
     it "should install package #{pkg}" do
       expect(chef_run).to install_package pkg
@@ -130,20 +133,6 @@ describe 'tilestache::install' do
       template = chef_run.template '/etc/tilestache/tilestache.conf'
       expect(template).to notify('runit_service[tilestache]').to(:restart).delayed
     end
-  end
-
-  it 'should not include recipe tilestache::apache if apache_proxy == false' do
-    chef_run.node.set[:tilestache][:apache_proxy] = false
-    chef_run.converge(described_recipe)
-
-    expect(chef_run).to_not include_recipe 'tilestache::apache'
-  end
-
-  it 'should include recipe tilestache::apache if apache_proxy == true' do
-    chef_run.node.set[:tilestache][:apache_proxy] = true
-    chef_run.converge(described_recipe)
-
-    expect(chef_run).to include_recipe 'tilestache::apache'
   end
 
 end

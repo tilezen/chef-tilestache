@@ -95,5 +95,3 @@ template "#{node[:tilestache][:cfg_path]}/#{node[:tilestache][:cfg_file]}" do
     end
   end
 end
-
-include_recipe 'tilestache::apache' if node[:tilestache][:apache_proxy] == true

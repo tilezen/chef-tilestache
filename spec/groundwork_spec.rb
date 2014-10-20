@@ -3,12 +3,7 @@ require 'spec_helper'
 describe 'tilestache::groundwork' do
 
   context 'requested user account is something other than root' do
-    let(:chef_run) do
-      ChefSpec::Runner.new do |node|
-        node.set[:tilestache][:apache_proxy]  = true
-        node.set[:apache][:dir]               = '/etc/apache'
-      end.converge(described_recipe)
-    end
+    let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
     it 'should create the user tilestache' do
       expect(chef_run).to create_user_account('tilestache').with(

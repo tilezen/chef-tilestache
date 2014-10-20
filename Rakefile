@@ -19,8 +19,8 @@ task :build do
 
   # Run specs
   #
-  # puts "\nRunning rspec".color(:blue)
-  # sh "rspec --color --format progress #{File.dirname(sandbox)}/cookbook"
+  puts "\nRunning rspec".color(:blue)
+  sh "rspec --color --format progress #{File.dirname(sandbox)}/cookbook"
 end
 
 task default: 'build'
