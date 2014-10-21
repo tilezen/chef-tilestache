@@ -1,6 +1,13 @@
 tilestache CHANGELOG
 ===================
 
+0.17.0
+------
+- gunicorn installation is optional
+- use python-pil apt package instead of python image package
+- new pip_requirements install method
+- remove running apache cookbook
+
 0.16.4
 ------
 - fix the tilestache config template restart resources
