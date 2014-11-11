@@ -2,6 +2,7 @@ default[:tilestache][:pip_requirements_location]      = "#{Chef::Config[:file_ca
 
 # default python package versions when using pip_requirements install method
 default[:tilestache][:pip_requirements][:argparse]    = 'argparse==1.2.1'
+default[:tilestache][:pip_requirements][:memcache]    = 'python-memcached==1.53'
 default[:tilestache][:pip_requirements][:modestmaps]  = 'ModestMaps==1.4.6'
 default[:tilestache][:pip_requirements][:pillow]      = 'Pillow==2.6.1'
 default[:tilestache][:pip_requirements][:protobuf]    = 'protobuf==2.6.0'
