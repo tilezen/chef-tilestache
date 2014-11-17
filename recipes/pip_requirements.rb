@@ -3,8 +3,8 @@
 # Recipe:: pip_requirements
 #
 
-template node[:tilestache][:pip_requirements_location] do
-  source 'tilestache-pip-requirements.txt.erb'
+file node[:tilestache][:pip_requirements_location] do
+  content node[:tilestache][:pip_requirements].join("\n")
 end
 
-python_pip "-r #{node[:tilestache][:pip_requirements_location]}"
+python_pip "-U -r #{node[:tilestache][:pip_requirements_location]}"
