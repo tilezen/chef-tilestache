@@ -1,6 +1,13 @@
 tilestache CHANGELOG
 ===================
 
+0.17.1
+------
+- update pip requirements generation strategy
+- upgrade packages with pip when installing
+- add memcache to pip requirements
+- add mapbox-vector-tile to pip requirements
+
 0.17.0
 ------
 - gunicorn installation is optional
