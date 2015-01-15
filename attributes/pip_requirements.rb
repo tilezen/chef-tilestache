@@ -3,7 +3,7 @@ default[:tilestache][:pip_requirements_location]      = "#{Chef::Config[:file_ca
 # default python package versions when using pip_requirements install method
 default[:tilestache][:pip_requirements] = %w(
   argparse==1.2.1
-  mapbox-vector-tile==0.0.2
+  mapbox-vector-tile==0.0.3
   ModestMaps==1.4.6
   Pillow==2.6.1
   protobuf==2.6.0
