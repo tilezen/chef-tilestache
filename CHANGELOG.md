@@ -1,6 +1,10 @@
 tilestache CHANGELOG
 ===================
 
+0.17.3
+------
+- bump version of mapbox_vector_tile to 0.0.5
+
 0.17.2
 ------
 - bump version of mapbox_vector_tile to 0.0.3
