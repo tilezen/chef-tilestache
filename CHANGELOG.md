@@ -1,6 +1,10 @@
 tilestache CHANGELOG
 ===================
 
+0.17.2
+------
+- bump version of mapbox_vector_tile to 0.0.3
+
 0.17.1
 ------
 - update pip requirements generation strategy
