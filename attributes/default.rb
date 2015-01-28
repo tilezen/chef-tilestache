@@ -15,7 +15,6 @@ default[:tilestache][:user]                    = 'tilestache'
 default[:tilestache][:group]                   = 'tilestache'
 default[:tilestache][:user_shell]              = '/bin/false'
 default[:tilestache][:user_keygen]             = false
-default[:tilestache][:apache_proxy]            = true
 default[:tilestache][:gunicorn_server]         = true
 default[:tilestache][:uid]                     = nil
 default[:tilestache][:gid]                     = nil
