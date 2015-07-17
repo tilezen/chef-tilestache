@@ -3,7 +3,7 @@ default[:tilestache][:pip_requirements_location]      = "#{Chef::Config[:file_ca
 # default python package versions when using pip_requirements install method
 default[:tilestache][:pip_requirements] = %w(
   argparse==1.2.1
-  mapbox-vector-tile==0.0.6
+  mapbox-vector-tile==0.0.10
   ModestMaps==1.4.6
   Pillow==2.6.1
   protobuf==2.6.0
@@ -11,6 +11,7 @@ default[:tilestache][:pip_requirements] = %w(
   python-memcached==1.53
   Shapely==1.4.3
   simplejson==3.6.4
+  StreetNames==0.1.5
   git+https://github.com/mapzen/TileStache@integration-1#egg=TileStache
   Werkzeug==0.9.6
   wsgiref==0.1.2
